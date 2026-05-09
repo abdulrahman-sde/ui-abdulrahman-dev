@@ -2,11 +2,11 @@ import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/launchui/ui/badge";
-import Glow from "@/components/launchui/ui/glow";
-import { LinkButton, type LinkButtonProps } from "@/components/launchui/ui/link-button";
-import { Mockup, MockupFrame } from "@/components/launchui/ui/mockup";
-import { Section } from "@/components/launchui/ui/section";
+import { Badge } from "@/components/templates/launchui/ui/badge";
+import Glow from "@/components/templates/launchui/ui/glow";
+import { LinkButton, type LinkButtonProps } from "@/components/templates/launchui/ui/link-button";
+import { Mockup, MockupFrame } from "@/components/templates/launchui/ui/mockup";
+import { Section } from "@/components/templates/launchui/ui/section";
 
 interface HeroButtonProps extends Omit<LinkButtonProps, "children"> {
   text: string;

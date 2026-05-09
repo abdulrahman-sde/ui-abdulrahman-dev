@@ -1,15 +1,32 @@
 import fs from "fs";
 import path from "path";
-import type { RegistryFile, RegistryItem, RegistryItemType, TemplateMeta } from "@/types/registry";
-import { meta as launchuiMeta } from "@/registry/launchui/meta";
+import type {
+  RegistryFile,
+  RegistryItem,
+  RegistryItemType,
+  TemplateMeta,
+} from "@/types/registry";
 
 const ROOT = process.cwd();
-const REGISTRY_DIR = path.join(ROOT, "registry");
-const COMPONENTS_DIR = path.join(ROOT, "components");
 const SCHEMA = "https://ui.shadcn.com/schema/registry-item.json";
 
 const METAS: Record<string, TemplateMeta> = {
-  launchui: launchuiMeta,
+  launchui: {
+    name: "launchui",
+    title: "Launch UI",
+    description:
+      "A full landing page template with hero, logos, feature grid, stats, pricing, FAQ, CTA, and footer. Built with React, Shadcn/ui and Tailwind.",
+    dependencies: [
+      "lucide-react",
+      "class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+      "@radix-ui/react-slot",
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-dialog",
+      "tw-animate-css",
+    ],
+  },
 };
 
 function walkDir(dir: string, base: string): string[] {
@@ -21,7 +38,7 @@ function walkDir(dir: string, base: string): string[] {
     const relPath = path.relative(base, fullPath);
     if (entry.isDirectory()) {
       files.push(...walkDir(fullPath, base));
-    } else if (entry.isFile() && entry.name !== "meta.ts" && !entry.name.startsWith(".")) {
+    } else if (entry.isFile() && !entry.name.startsWith(".")) {
       files.push(relPath);
     }
   }
@@ -30,81 +47,56 @@ function walkDir(dir: string, base: string): string[] {
 
 function fileType(targetPath: string): RegistryItemType {
   if (targetPath === "app/page.tsx") return "registry:page";
+  if (targetPath === "app/layout.tsx") return "registry:file";
   if (targetPath === "app/globals.css") return "registry:file";
   if (targetPath.startsWith("hooks/")) return "registry:hook";
   if (targetPath.startsWith("lib/")) return "registry:lib";
   return "registry:component";
 }
 
-interface SourceFile {
-  registryPath: string;
-  target: string;
-  absPath: string;
-}
-
-function collectSources(slug: string): SourceFile[] {
-  const sources: SourceFile[] = [];
-
-  const registryDir = path.join(REGISTRY_DIR, slug);
-  for (const rel of walkDir(registryDir, registryDir)) {
-    const basename = path.basename(rel);
-    let target: string;
-    if (basename === "globals.css") target = "app/globals.css";
-    else if (rel === "page.tsx") target = "app/page.tsx";
-    else target = `app/${rel}`;
-    sources.push({
-      registryPath: `registry/${slug}/${rel}`,
-      target,
-      absPath: path.join(registryDir, rel),
-    });
-  }
-
-  const componentsDir = path.join(COMPONENTS_DIR, slug);
-  for (const rel of walkDir(componentsDir, componentsDir)) {
-    const basename = path.basename(rel);
-    if (rel === "layout.tsx") {
-      sources.push({
-        registryPath: `components/${slug}/${rel}`,
-        target: "app/layout.tsx",
-        absPath: path.join(componentsDir, rel),
-      });
-      continue;
-    }
-    if (basename === "globals.css") {
-      sources.push({
-        registryPath: `components/${slug}/${rel}`,
-        target: "app/globals.css",
-        absPath: path.join(componentsDir, rel),
-      });
-      continue;
-    }
-    sources.push({
-      registryPath: `components/${slug}/${rel}`,
-      target: `components/${slug}/${rel}`,
-      absPath: path.join(componentsDir, rel),
-    });
-  }
-
-  return sources;
-}
-
 export async function buildRegistryItem(slug: string): Promise<RegistryItem> {
-  const meta: TemplateMeta = METAS[slug] ?? { name: slug, title: slug };
-  const sources = collectSources(slug);
+  const meta = METAS[slug] ?? { name: slug, title: slug };
 
-  const byTarget = new Map<string, SourceFile>();
-  for (const s of sources) {
-    const existing = byTarget.get(s.target);
-    if (!existing) byTarget.set(s.target, s);
-    else if (s.registryPath.startsWith("components/")) byTarget.set(s.target, s);
+  const componentsDir = path.join(ROOT, "components", "templates", slug);
+  const routeDir = path.join(ROOT, "app", "templates", slug, "(pages)");
+
+  const files: RegistryFile[] = [];
+
+  // Ship every file under components/templates/<slug>/ (sections, ui, globals.css, …)
+  for (const rel of walkDir(componentsDir, componentsDir)) {
+    const target =
+      path.basename(rel) === "globals.css"
+        ? "app/globals.css"
+        : `components/templates/${slug}/${rel}`;
+    files.push({
+      path: `components/templates/${slug}/${rel}`,
+      type: fileType(target),
+      target,
+      content: fs.readFileSync(path.join(componentsDir, rel), "utf-8"),
+    });
   }
 
-  const files: RegistryFile[] = Array.from(byTarget.values()).map((s) => ({
-    path: s.registryPath,
-    type: fileType(s.target),
-    target: s.target,
-    content: fs.readFileSync(s.absPath, "utf-8"),
-  }));
+  // Ship the route's page.tsx + layout.tsx so install matches preview exactly.
+  // Rewrite the dev-side globals.css import so it resolves once installed
+  // at app/globals.css (the install target).
+  for (const rel of walkDir(routeDir, routeDir)) {
+    const basename = path.basename(rel);
+    if (basename !== "page.tsx" && basename !== "layout.tsx") continue;
+    const target = `app/${basename}`;
+    let content = fs.readFileSync(path.join(routeDir, rel), "utf-8");
+    if (basename === "layout.tsx") {
+      content = content.replace(
+        new RegExp(`(["'])@/components/templates/${slug}/globals\\.css\\1`, "g"),
+        `"./globals.css"`,
+      );
+    }
+    files.push({
+      path: `app/templates/${slug}/(pages)/${rel}`,
+      type: fileType(target),
+      target,
+      content,
+    });
+  }
 
   return {
     $schema: SCHEMA,

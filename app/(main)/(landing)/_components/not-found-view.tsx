@@ -93,7 +93,7 @@ export default function NotFoundView() {
             {suggestions.map((t) => (
               <Link
                 key={t.slug}
-                href={`/templates/${t.slug}`}
+                href={`/template/${t.slug}`}
                 className="group ring-border hover:ring-primary/30 bg-card relative flex flex-col overflow-hidden rounded-2xl text-left ring-1"
               >
                 <div className="bg-muted relative h-36 overflow-hidden">

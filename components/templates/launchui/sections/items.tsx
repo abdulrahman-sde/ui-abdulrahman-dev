@@ -9,8 +9,8 @@ import {
   SquarePenIcon,
 } from "lucide-react";
 import { ReactNode } from "react";
-import { Item, ItemDescription, ItemIcon, ItemTitle } from "@/components/launchui/ui/item";
-import { Section } from "@/components/launchui/ui/section";
+import { Item, ItemDescription, ItemIcon, ItemTitle } from "@/components/templates/launchui/ui/item";
+import { Section } from "@/components/templates/launchui/ui/section";
 
 interface ItemProps {
   title: string;

@@ -1,4 +1,4 @@
-import { Section } from "@/components/launchui/ui/section";
+import { Section } from "@/components/templates/launchui/ui/section";
 
 interface StatItem {
   label?: string;

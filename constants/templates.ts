@@ -1,19 +1,18 @@
 import type { Template } from "@/types/template";
-import launchuiThumbnail from "@/public/thumbnails/notio.png";
+
 export const TEMPLATES: Template[] = [
   {
-    slug: "launchui",
-    title: "Launch UI",
+    slug: "nexora",
+    title: "Nexora",
     category: "SaaS",
-    tags: ["Next.js", "Light/Dark", "Tailwind", "Open source"],
+    tags: ["Next.js", "Light", "Tailwind", "Open source"],
     color: "amber",
     accent: "oklch(66.5% 0.1804 47.04)",
     description:
-      "A full landing page template with hero, logos, feature grid, stats, pricing, FAQ, CTA, and footer.",
+      "An AI image generation landing page with hero, core features, how it works, pricing, and footer sections.",
     featured: true,
-    components: 9,
-    downloads: "2.1k",
-    thumbnail: launchuiThumbnail,
+    components: 5,
+    downloads: "1.2k",
   },
 ];
 

@@ -198,11 +198,10 @@ function FolderContent({ children }: { children: React.ReactNode }) {
     <AnimatePresence initial={false}>
       {isOpen && (
         <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
+          initial={{ height: 0, opacity: 0, overflow: "hidden" }}
+          animate={{ height: "auto", opacity: 1, transitionEnd: { overflow: "visible" } }}
+          exit={{ height: 0, opacity: 0, overflow: "hidden" }}
           transition={{ type: "spring", stiffness: 500, damping: 40 }}
-          style={{ overflow: "hidden" }}
         >
           {children}
         </motion.div>
@@ -353,7 +352,7 @@ export function FileTree({
     >
       <div
         className={cn(
-          "rounded-xl border border-border/60 overflow-hidden",
+          "rounded-xl border border-border/60",
           className,
         )}
       >

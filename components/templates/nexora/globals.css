@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --nexora-yellow: #f5c344;
+  --nexora-yellow-light: #f9ed96;
+  --nexora-red: #f28482;
+  --nexora-purple-dark: #b567c2;
+  --nexora-purple-light: #e5a1f5;
+  --nexora-orange: #ffb347;
+  --nexora-pink: #f8aca0;
+}
+
+@theme inline {
+  --color-nexora-yellow: var(--nexora-yellow);
+  --color-nexora-yellow-light: var(--nexora-yellow-light);
+  --color-nexora-red: var(--nexora-red);
+  --color-nexora-purple-dark: var(--nexora-purple-dark);
+  --color-nexora-purple-light: var(--nexora-purple-light);
+  --color-nexora-orange: var(--nexora-orange);
+  --color-nexora-pink: var(--nexora-pink);
+}

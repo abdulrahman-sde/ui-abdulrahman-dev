@@ -38,7 +38,6 @@ export default async function TemplateDetailPage({
   const filesWithHighlight = await Promise.all(
     (registryItem.files || []).map(async (file) => {
       const ext = file.path.split(".").pop() || "tsx";
-      // Highlight TSX/TS differently if needed, but the default is fine.
       const html = await highlight(file.content as string, ext);
       return {
         path: file.path,
@@ -46,7 +45,7 @@ export default async function TemplateDetailPage({
         content: file.content as string,
         html,
       };
-    })
+    }),
   );
 
   return (
@@ -60,9 +59,9 @@ export default async function TemplateDetailPage({
         </p>
       </div>
 
-      <TemplateViewer 
-        files={filesWithHighlight} 
-        command={`${REGISTRY_BASE}/r/${t.slug}.json`} 
+      <TemplateViewer
+        files={filesWithHighlight}
+        command={`${REGISTRY_BASE}/r/${t.slug}.json`}
         src={`/templates/${t.slug}`}
         name={t.title}
       />

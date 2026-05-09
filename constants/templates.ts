@@ -1,5 +1,5 @@
 import type { Template } from "@/types/template";
-
+import nexoraThumbnail from "@/public/thumbnails/nexora.png";
 export const TEMPLATES: Template[] = [
   {
     slug: "nexora",
@@ -13,6 +13,7 @@ export const TEMPLATES: Template[] = [
     featured: true,
     components: 5,
     downloads: "1.2k",
+    thumbnail: nexoraThumbnail,
   },
 ];
 

@@ -58,7 +58,7 @@ export async function buildRegistryItem(slug: string): Promise<RegistryItem> {
   const meta = METAS[slug] ?? { name: slug, title: slug };
 
   const componentsDir = path.join(ROOT, "components", "templates", slug);
-  const routeDir = path.join(ROOT, "app", "templates", slug, "(pages)");
+  const routeDir = path.join(ROOT, "app", "templates", slug);
 
   const files: RegistryFile[] = [];
 
@@ -91,7 +91,7 @@ export async function buildRegistryItem(slug: string): Promise<RegistryItem> {
       );
     }
     files.push({
-      path: `app/templates/${slug}/(pages)/${rel}`,
+      path: `app/templates/${slug}/${rel}`,
       type: fileType(target),
       target,
       content,

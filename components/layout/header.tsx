@@ -172,12 +172,15 @@ export const HeroHeader = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button size="sm" className="mx-2 gap-1 pr-1" asChild>
-                        <Link href="/templates">
-                          Browse Templates{" "}
-                          <ChevronRight className="opacity-50" />
-                        </Link>
-                      </Button>
+                      <div className="flex items-center gap-1 mx-2">
+                        <ThemeToggle />
+                        <Button size="sm" className="gap-1 pr-1" asChild>
+                          <Link href="/templates">
+                            Browse Templates{" "}
+                            <ChevronRight className="opacity-50" />
+                          </Link>
+                        </Button>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

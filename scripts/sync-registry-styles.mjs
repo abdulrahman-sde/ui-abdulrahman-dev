@@ -10,23 +10,35 @@ const out = join(root, "public", "registry-styles");
 mkdirSync(out, { recursive: true });
 
 const registryDir = join(root, "registry");
+const componentsDir = join(root, "components");
 const slugs = readdirSync(registryDir, { withFileTypes: true })
   .filter((e) => e.isDirectory())
   .map((e) => e.name);
 
 for (const slug of slugs) {
-  const cssPath = join(registryDir, slug, "globals.css");
+  // globals.css lives next to the components (mirrors install layout).
+  // Fall back to the registry dir for back-compat.
+  const candidates = [
+    join(componentsDir, slug, "globals.css"),
+    join(registryDir, slug, "globals.css"),
+  ];
   let css;
-  try {
-    css = readFileSync(cssPath, "utf-8");
-  } catch {
-    continue;
+  let cssPath;
+  for (const candidate of candidates) {
+    try {
+      css = readFileSync(candidate, "utf-8");
+      cssPath = candidate;
+      break;
+    } catch {
+      // try next
+    }
   }
+  if (!css) continue;
 
-  // Compile through Tailwind v4 so @import "tailwindcss" and @theme are resolved.
-  // base must point to the registry/<slug> dir so relative @source/@plugin paths resolve.
+  // Compile through Tailwind v4. base = repo root so the JIT scans both
+  // registry/<slug>/ and components/<slug>/ for class names.
   const result = await postcss([
-    tailwindcss({ base: join(registryDir, slug) }),
+    tailwindcss({ base: root }),
   ]).process(css, {
     from: cssPath,
     to: join(out, `${slug}.css`),

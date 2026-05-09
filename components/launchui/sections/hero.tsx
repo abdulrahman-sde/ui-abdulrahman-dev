@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "lucide-react";
+import Link from "next/link";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/launchui/ui/badge";
@@ -23,10 +24,10 @@ interface HeroProps {
 const DEFAULT_BADGE = (
   <Badge variant="outline" className="animate-appear">
     <span className="text-muted-foreground">Professionally crafted landing page components</span>
-    <a href="/" className="flex items-center gap-1">
+    <Link href="/" className="flex items-center gap-1">
       Get started
       <ArrowRightIcon className="size-3" />
-    </a>
+    </Link>
   </Badge>
 );
 

@@ -39,7 +39,6 @@ export interface TemplateMeta {
   dependencies?: string[];
   registryDependencies?: string[];
   cssVars?: RegistryCssVars;
-  fileTargets?: Record<string, string>;
 }
 
 export interface TemplateSourceFile {

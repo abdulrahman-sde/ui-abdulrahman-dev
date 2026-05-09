@@ -1,15 +1,62 @@
 "use client";
 
-import { useState } from "react";
-import { Copy, Check, FileCode } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useMemo, useState } from "react";
+import { Copy, Check } from "lucide-react";
+import {
+  FileTree,
+  type FileTreeElement,
+} from "@/components/unlumen-ui/file-tree";
 import type { TemplateSourceFile } from "@/types/registry";
 
 interface CodeViewerProps {
   files: TemplateSourceFile[];
 }
 
+function buildFileTree(files: TemplateSourceFile[]) {
+  const root: FileTreeElement[] = [];
+  const folderByPath = new Map<string, FileTreeElement>();
+  const openFolderIds = new Set<string>();
+
+  for (const file of files) {
+    const segments = file.path.split("/");
+    const fileName = segments.pop();
+    if (!fileName) continue;
+
+    let currentPath = "";
+    let siblings = root;
+
+    for (const segment of segments) {
+      currentPath = currentPath ? `${currentPath}/${segment}` : segment;
+      openFolderIds.add(currentPath);
+
+      let folder = folderByPath.get(currentPath);
+      if (!folder) {
+        folder = {
+          id: currentPath,
+          name: segment,
+          type: "folder",
+          children: [],
+        };
+        folderByPath.set(currentPath, folder);
+        siblings.push(folder);
+      }
+
+      siblings = folder.children ?? [];
+      folder.children = siblings;
+    }
+
+    siblings.push({
+      id: file.path,
+      name: fileName,
+      icon: undefined,
+    });
+  }
+
+  return { elements: root, defaultOpenIds: Array.from(openFolderIds) };
+}
+
 export default function CodeViewer({ files }: CodeViewerProps) {
+  const tree = useMemo(() => buildFileTree(files), [files]);
   const [selected, setSelected] = useState(files[0]?.path ?? "");
   const [copied, setCopied] = useState(false);
 
@@ -24,39 +71,28 @@ export default function CodeViewer({ files }: CodeViewerProps) {
 
   if (!files.length) {
     return (
-      <div className="flex min-h-[480px] items-center justify-center text-sm text-muted-foreground">
+      <div className="flex min-h-120 items-center justify-center text-sm text-muted-foreground">
         No source files found.
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-[480px]">
+    <div className="flex min-h-120">
       {/* File tree sidebar */}
-      <div className="border-border bg-card w-48 shrink-0 border-r">
-        <div className="border-border border-b px-3 py-2">
-          <span className="text-muted-foreground text-[10px] font-medium uppercase tracking-wide">
-            Files
-          </span>
-        </div>
-        <ul className="py-1">
-          {files.map((f) => (
-            <li key={f.path}>
-              <button
-                onClick={() => setSelected(f.path)}
-                className={cn(
-                  "flex w-full items-center gap-2 px-3 py-1.5 text-left text-[11px] transition-colors cursor-pointer",
-                  selected === f.path
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                <FileCode className="size-3 shrink-0" />
-                <span className="truncate">{f.path}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+      <div className="border-border bg-card w-64 shrink-0 border-r p-2">
+        <FileTree
+          elements={tree.elements}
+          className="border-border/60 bg-background/40 rounded-2xl border shadow-sm"
+          selectedId={selected}
+          onSelect={(node) => {
+            if (node.type !== "folder") {
+              setSelected(node.id);
+            }
+          }}
+          defaultOpenIds={tree.defaultOpenIds}
+          showIcons
+        />
       </div>
 
       {/* Code pane */}

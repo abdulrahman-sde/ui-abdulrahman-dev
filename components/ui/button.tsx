@@ -4,11 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "cursor-pointer active:scale-99 duration-200 font-medium inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "cursor-pointer active:scale-99 duration-200 font-medium inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-foreground text-background hover:brightness-95",
+        default:
+          "relative isolate overflow-hidden bg-[linear-gradient(135deg,var(--primary)_0%,color-mix(in_oklab,var(--primary)_88%,white)_45%,color-mix(in_oklab,var(--primary)_72%,black)_100%)] text-primary-foreground shadow-[0_14px_30px_-18px_rgba(59,130,246,0.45)] ring-1 ring-inset ring-white/15 before:absolute before:inset-px before:rounded-[inherit] before:bg-[linear-gradient(180deg,rgba(255,255,255,0.3),rgba(255,255,255,0)_58%)] before:content-[''] hover:brightness-[1.03] dark:ring-white/10",
         neutral: "bg-foreground text-background hover:brightness-95",
         destructive:
           "bg-destructive text-destructive-foreground shadow-md hover:bg-destructive/90",

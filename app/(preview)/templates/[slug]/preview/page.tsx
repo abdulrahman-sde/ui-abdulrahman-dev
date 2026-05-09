@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
-import NotioTemplate from "@/registry/notio/page";
+import LaunchUITemplate from "@/registry/launchui/page";
 
 // Add a new entry here for each template added to registry/
 const RENDERERS: Record<string, React.ComponentType> = {
-  notio: NotioTemplate,
+  launchui: LaunchUITemplate,
 };
 
 export async function generateStaticParams() {

@@ -1,5 +1,3 @@
-import { HeroHeader } from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
 import TemplateDetail from "@/app/(main)/templates/[slug]/_components/template-detail";
 import { TEMPLATES } from "@/constants/templates";
 
@@ -15,9 +13,9 @@ export default async function TemplatePage({
   const { slug } = await params;
   return (
     <div className="bg-background min-h-screen">
-      <HeroHeader />
-      <TemplateDetail slug={slug} />
-      <Footer />
+      <div className="max-w-5xl mx-auto">
+        <TemplateDetail slug={slug} />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { TEMPLATES } from "@/constants/templates";
-import { TemplateMock, colorToVariant } from "@/components/shared/template-mock";
+import {
+  TemplateMock,
+  colorToVariant,
+} from "@/components/shared/template-mock";
 import type { Template } from "@/types/template";
+import Image from "next/image";
 
 function TemplateThumb({ t }: { t: Template }) {
   return (
@@ -20,9 +24,14 @@ export default function TemplatesShowcase() {
         <div className="mb-12 flex items-end justify-between gap-4">
           <div>
             <h2 className="font-serif text-4xl font-medium">Templates</h2>
-            <p className="text-muted-foreground mt-3 text-balance">Free to use. More added regularly.</p>
+            <p className="text-muted-foreground mt-3 text-balance">
+              Free to use. More added regularly.
+            </p>
           </div>
-          <Link href="/templates" className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">
+          <Link
+            href="/templates"
+            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm"
+          >
             View all <ArrowUpRight className="size-3" />
           </Link>
         </div>
@@ -32,22 +41,42 @@ export default function TemplatesShowcase() {
             <Link
               key={t.slug}
               href={`/templates/${t.slug}`}
-              className="group ring-border hover:ring-primary/30 relative flex flex-col overflow-hidden rounded-2xl ring-1 transition-all duration-200 text-left"
+              className="group flex flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-border text-left"
             >
-              <div className="bg-muted relative h-44 overflow-hidden">
-                <TemplateThumb t={t} />
-                <div className="group-hover:opacity-100 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 bg-black/0 group-hover:bg-black/5">
-                  <span className="bg-background ring-border flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs ring-1">
-                    Preview <ArrowUpRight className="size-3" />
-                  </span>
+              {/* Thumbnail with inner double-bezel */}
+              <div className="bg-muted p-3 h-55">
+                {/* Outer bezel shell */}
+                <div className="h-full rounded-xl bg-foreground/10 p-1.5 ring-1 ring-foreground/10">
+                  {/* Inner core — image clips here */}
+                  <div className="relative h-full w-full overflow-hidden rounded-[calc(0.75rem-3px)]">
+                    {t.thumbnail ? (
+                      <Image
+                        src={t.thumbnail}
+                        alt={t.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.05]"
+                        sizes="(max-width: 640px) 100vw, 480px"
+                      />
+                    ) : (
+                      <TemplateThumb t={t} />
+                    )}
+                    <div className="group-hover:opacity-100 absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:bg-black/5">
+                      <span className="bg-background ring-border flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs ring-1">
+                        Preview <ArrowUpRight className="size-3" />
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="bg-card border-border flex items-center justify-between border-t px-4 py-3">
                 <div>
-                  <p className="text-foreground text-sm font-medium">{t.title}</p>
-                  <p className="text-muted-foreground text-xs">{t.category}</p>
+                  <p className="text-foreground text-sm font-medium">
+                    {t.title}
+                  </p>
                 </div>
-                <span className="text-muted-foreground border-border rounded-full border px-2.5 py-0.5 text-xs">Free</span>
+                <span className="text-muted-foreground border-border rounded-full border px-2.5 py-0.5 text-xs">
+                  Free
+                </span>
               </div>
             </Link>
           ))}

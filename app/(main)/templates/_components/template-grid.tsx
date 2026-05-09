@@ -1,57 +1,81 @@
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
-import { TemplateMock, colorToVariant } from "@/components/shared/template-mock";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import {
+  TemplateMock,
+  colorToVariant,
+} from "@/components/shared/template-mock";
 import { TEMPLATES } from "@/constants/templates";
 
 export default function TemplateGrid() {
   return (
-    <div className="pt-28 pb-24">
-      <div className="mx-auto max-w-3xl px-6">
-        <div className="text-muted-foreground mb-10 flex items-center gap-2 text-sm">
-          <Link href="/" className="hover:text-foreground">Home</Link>
-          <span>/</span>
-          <span className="text-foreground">Templates</span>
-        </div>
+    <div className="pt-32 pb-28 px-4">
+      {/* Page header */}
+      <div className="mb-12">
+        <h1 className="font-serif text-[2.6rem] font-medium leading-[1.1] tracking-tight">
+          All templates
+        </h1>
+        <p className="text-muted-foreground mt-4 max-w-lg text-sm leading-relaxed text-balance">
+          Free, open-source landing page templates built with Next.js and
+          Tailwind. Pick one, run a single command, and it drops straight into
+          your project.
+        </p>
+        <div className="border-border mt-8 h-px w-full" />
+      </div>
 
-        <div className="mb-10">
-          <h1 className="font-serif text-5xl font-medium">All templates</h1>
-          <p className="text-muted-foreground mt-3 text-balance">
-            Free, MIT-licensed landing page templates. More added every month.
-          </p>
-        </div>
+      {/* Grid */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {TEMPLATES.map((t) => (
+          <Link
+            key={t.slug}
+            href={`/templates/${t.slug}`}
+            className="group flex flex-col overflow-hidden rounded-2xl bg-card ring-1 ring-border"
+          >
+            {/* Thumbnail with inner double-bezel */}
+            <div className="bg-muted p-3" style={{ aspectRatio: "16/10" }}>
+              {/* Outer bezel shell */}
+              <div className="h-full rounded-xl bg-foreground/10 p-1.5 ring-1 ring-foreground/10">
+                {/* Inner core — image clips here */}
+                <div className="relative h-full w-full overflow-hidden rounded-[calc(0.75rem-3px)]">
+                  {t.thumbnail ? (
+                    <Image
+                      src={t.thumbnail}
+                      alt={t.title}
+                      fill
+                      placeholder="blur"
+                      className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
+                      sizes="(max-width: 640px) 100vw, 600px"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 origin-center scale-[1.15] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.2]">
+                      <TemplateMock
+                        accent={t.accent}
+                        variant={colorToVariant(t.color)}
+                      />
+                    </div>
+                  )}
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {TEMPLATES.map((t) => (
-            <Link
-              key={t.slug}
-              href={`/templates/${t.slug}`}
-              className="group ring-border hover:ring-primary/30 bg-card relative flex flex-col overflow-hidden rounded-2xl text-left ring-1 transition-all duration-200"
-            >
-              {t.featured && (
-                <span className="bg-primary text-primary-foreground absolute left-3 top-3 z-10 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium">
-                  <Sparkles className="size-2.5" /> Featured
-                </span>
-              )}
-              <div className="bg-muted relative h-44 overflow-hidden">
-                <div className="absolute inset-0 origin-center scale-[1.2]">
-                  <TemplateMock accent={t.accent} variant={colorToVariant(t.color)} />
-                </div>
-                <div className="group-hover:opacity-100 absolute inset-0 flex items-center justify-center bg-black/5 opacity-0 transition-opacity duration-200">
-                  <span className="bg-background ring-border flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs ring-1">
-                    View template <ArrowUpRight className="size-3" />
-                  </span>
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="flex items-center gap-1.5 rounded-full bg-background px-4 py-2 text-xs font-medium ring-1 ring-border shadow-sm">
+                      View template
+                      <span className="flex size-5 items-center justify-center rounded-full bg-foreground/8 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                        <ArrowUpRight className="size-2.5" />
+                      </span>
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="border-border flex items-center justify-between border-t px-4 py-3">
-                <div className="min-w-0">
-                  <p className="text-foreground truncate text-sm font-medium">{t.title}</p>
-                  <p className="text-muted-foreground truncate text-xs">{t.category} · {t.tags[0]}</p>
-                </div>
-                <span className="text-muted-foreground border-border rounded-full border px-2.5 py-0.5 text-xs whitespace-nowrap">Free</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+
+            {/* Footer */}
+            <div className="border-t border-border px-4 py-3">
+              <p className="truncate text-sm font-medium text-foreground">
+                {t.title}
+              </p>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

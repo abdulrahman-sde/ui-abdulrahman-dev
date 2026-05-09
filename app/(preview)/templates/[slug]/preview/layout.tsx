@@ -3,7 +3,7 @@ import { TEMPLATES } from "@/constants/templates";
 import { notFound } from "next/navigation";
 
 // Slugs with a real registry entry. Add here when a new template lands in registry/.
-const PREVIEWABLE = new Set(["notio"]);
+const PREVIEWABLE = new Set(["launchui"]);
 
 export async function generateMetadata({
   params,

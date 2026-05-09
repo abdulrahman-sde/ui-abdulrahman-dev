@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Lora, JetBrains_Mono } from "next/font/google";
+import { Geist, Lora, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { HeroHeader } from "@/components/layout/header";
 import "../globals.css";
 
-const fontSans = Inter({
+const fontSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -34,6 +35,7 @@ export default function MainLayout({
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <HeroHeader />
           {children}
         </ThemeProvider>
       </body>

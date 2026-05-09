@@ -4,8 +4,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../ui/accordion";
-import { Section } from "../ui/section";
+} from "@/components/launchui/ui/accordion";
+import { Section } from "@/components/launchui/ui/section";
 
 interface FAQItem {
   question: string;

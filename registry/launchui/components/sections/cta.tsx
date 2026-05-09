@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import Glow from "../ui/glow";
-import { LinkButton, type LinkButtonProps } from "../ui/link-button";
-import { Section } from "../ui/section";
+import Glow from "@/components/launchui/ui/glow";
+import { LinkButton, type LinkButtonProps } from "@/components/launchui/ui/link-button";
+import { Section } from "@/components/launchui/ui/section";
 
 interface CTAButtonProps extends Omit<LinkButtonProps, "children"> {
   text: string;

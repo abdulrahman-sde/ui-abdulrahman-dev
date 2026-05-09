@@ -5,7 +5,7 @@ export type RegistryItemType =
   | "registry:page"
   | "registry:hook"
   | "registry:lib"
-  | "registry:css";
+  | "registry:file";
 
 export interface RegistryFile {
   path: string;

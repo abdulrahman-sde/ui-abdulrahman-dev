@@ -3,9 +3,9 @@
 import { Menu } from "lucide-react";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import { Navbar, NavbarLeft, NavbarRight } from "../ui/navbar";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { Button } from "@/components/launchui/ui/button";
+import { Navbar, NavbarLeft, NavbarRight } from "@/components/launchui/ui/navbar";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/launchui/ui/sheet";
 
 interface NavLink {
   text: string;

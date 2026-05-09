@@ -28,7 +28,7 @@ function walkDir(dir: string, base: string): string[] {
 
 function fileType(filePath: string): RegistryItemType {
   if (filePath === "page.tsx" || filePath === "page.ts") return "registry:page";
-  if (filePath === "globals.css") return "registry:css";
+  if (filePath === "globals.css") return "registry:file";
   if (filePath.includes("hooks/") || filePath.startsWith("hooks")) return "registry:hook";
   if (filePath.includes("lib/") || filePath.startsWith("lib")) return "registry:lib";
   return "registry:component";

@@ -1,7 +1,7 @@
 import { User, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { PricingColumn, type PricingColumnProps } from "../ui/pricing-column";
-import { Section } from "../ui/section";
+import { PricingColumn, type PricingColumnProps } from "@/components/launchui/ui/pricing-column";
+import { Section } from "@/components/launchui/ui/section";
 
 interface PricingProps {
   title?: string | false;

@@ -5,7 +5,7 @@ import {
   FooterBottom,
   FooterColumn,
   FooterContent,
-} from "../ui/footer";
+} from "@/components/launchui/ui/footer";
 
 interface FooterLink {
   text: string;

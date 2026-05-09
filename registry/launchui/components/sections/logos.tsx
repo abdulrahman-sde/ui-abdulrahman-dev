@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { Badge } from "../ui/badge";
-import { Section } from "../ui/section";
+import { Badge } from "@/components/launchui/ui/badge";
+import { Section } from "@/components/launchui/ui/section";
 
 interface LogoItem {
   name: string;

@@ -30,19 +30,21 @@ const METAS: Record<string, TemplateMeta> = {
     title: "Nexora",
     description:
       "A full landing page template with hero, logos, feature grid, stats, pricing, FAQ, CTA, and footer. Built with React, Shadcn/ui and Tailwind.",
-    dependencies: ["tw-animate-css"],
   },
   glaze: {
     name: "glaze",
     title: "Glaze",
     description:
       "A sleek, dark-themed landing page template with glassmorphism effects.",
-    dependencies: ["tw-animate-css"],
+    dependencies: ["lucide-react"],
+    registryDependencies: ["accordion", "button"],
   },
   popcorn: {
     name: "popcorn",
     title: "Popcorn",
     description: "A clean, modern landing page for global services with coverage map, features, and testimonials.",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["accordion", "button"],
   },
 };
 

@@ -18,7 +18,7 @@ export default function Landing4() {
   return (
     <>
       <HeroSection />
-      <HeroLogo />
+      {/* <HeroLogo /> */}
       <Features />
       <Content />
       <Pricing />

@@ -1,5 +1,6 @@
 import type { Template } from "@/types/template";
 import nexoraThumbnail from "@/public/thumbnails/nexora.png";
+import novaThumbnail from "@/public/thumbnails/nova.png";
 
 export const TEMPLATES: Template[] = [
   {
@@ -18,7 +19,7 @@ export const TEMPLATES: Template[] = [
       "A premium SaaS landing page with hero, features, content, pricing, and FAQ sections.",
     color: "amber",
     accent: "hsl(38.6 92.1% 50.2%)",
-    thumbnail: nexoraThumbnail,
+    thumbnail: novaThumbnail,
   },
 ];
 

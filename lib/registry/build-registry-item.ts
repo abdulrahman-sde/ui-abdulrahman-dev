@@ -11,6 +11,22 @@ const ROOT = process.cwd();
 const SCHEMA = "https://ui.shadcn.com/schema/registry-item.json";
 
 const METAS: Record<string, TemplateMeta> = {
+  nova: {
+    name: "nova",
+    title: "Nova",
+    description:
+      "A premium SaaS landing page with hero, features, content, pricing, FAQ, testimonials, and footer sections. Built with React, Shadcn/ui and Tailwind.",
+    dependencies: [
+      "lucide-react",
+      "clsx",
+      "tailwind-merge",
+      "motion",
+      "@radix-ui/react-accordion",
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "tw-animate-css",
+    ],
+  },
   launchui: {
     name: "launchui",
     title: "Launch UI",

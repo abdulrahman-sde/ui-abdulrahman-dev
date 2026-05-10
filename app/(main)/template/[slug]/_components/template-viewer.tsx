@@ -17,78 +17,35 @@ import {
 } from "@/components/unlumen-ui/file-tree";
 import { cn } from "@/lib/utils";
 
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
+
 type PackageManager = "bun" | "npm" | "pnpm" | "yarn";
 
 const PACKAGE_MANAGERS: {
   name: PackageManager;
   prefix: string;
-  icon: React.ReactNode;
+  icon: string;
 }[] = [
   {
     name: "bun",
     prefix: "bunx --bun shadcn@latest add",
-    icon: (
-      <svg viewBox="0 0 100 100" className="size-4" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="55" r="38" fill="#FBF0DF" />
-        <ellipse cx="38" cy="62" rx="9" ry="9" fill="#14120E" />
-        <ellipse cx="58" cy="57" rx="10.5" ry="10.5" fill="#14120E" />
-        <circle cx="36" cy="59" r="3" fill="#FBF0DF" />
-        <circle cx="56" cy="54" r="3.5" fill="#FBF0DF" />
-        <circle cx="50" cy="17" r="11" fill="#FBF0DF" stroke="#14120E" strokeWidth="4" />
-        <line x1="50" y1="28" x2="50" y2="44" stroke="#14120E" strokeWidth="5" strokeLinecap="round" />
-        <line x1="17" y1="55" x2="30" y2="55" stroke="#14120E" strokeWidth="5" strokeLinecap="round" />
-        <line x1="70" y1="55" x2="83" y2="55" stroke="#14120E" strokeWidth="5" strokeLinecap="round" />
-        <line x1="27" y1="35" x2="36" y2="44" stroke="#14120E" strokeWidth="5" strokeLinecap="round" />
-        <line x1="73" y1="35" x2="64" y2="44" stroke="#14120E" strokeWidth="5" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: "/icons/bun.svg",
   },
   {
     name: "npm",
     prefix: "npx shadcn@latest add",
-    icon: (
-      <svg viewBox="0 0 18 7" className="size-4" xmlns="http://www.w3.org/2000/svg">
-        <rect width="18" height="7" fill="#CB3837" rx="1" />
-        <rect x="1" y="1" width="5" height="5" fill="white" />
-        <rect x="7" y="1" width="5" height="5" fill="white" />
-        <rect x="13" y="1" width="4" height="5" fill="white" />
-        <rect x="2" y="2" width="1" height="3" fill="#CB3837" />
-        <rect x="4" y="2" width="1" height="4" fill="#CB3837" />
-        <rect x="8" y="2" width="1" height="3" fill="#CB3837" />
-        <rect x="10" y="2" width="1" height="4" fill="#CB3837" />
-        <rect x="14" y="2" width="2" height="3" fill="#CB3837" />
-      </svg>
-    ),
+    icon: "/icons/npm.svg",
   },
   {
     name: "pnpm",
     prefix: "pnpm dlx shadcn@latest add",
-    icon: (
-      <svg viewBox="0 0 16 16" className="size-4" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="0" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-        <rect x="5.6" y="0" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-        <rect x="11.2" y="0" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-        <rect x="0" y="5.6" width="4.8" height="4.8" rx="0.6" fill="#9B9B9B" />
-        <rect x="5.6" y="5.6" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-        <rect x="11.2" y="5.6" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-        <rect x="0" y="11.2" width="4.8" height="4.8" rx="0.6" fill="#9B9B9B" />
-        <rect x="5.6" y="11.2" width="4.8" height="4.8" rx="0.6" fill="#9B9B9B" />
-        <rect x="11.2" y="11.2" width="4.8" height="4.8" rx="0.6" fill="#F69220" />
-      </svg>
-    ),
+    icon: "/icons/pnpm.svg",
   },
   {
     name: "yarn",
     prefix: "yarn shadcn@latest add",
-    icon: (
-      <svg viewBox="0 0 24 24" className="size-4" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="12" fill="#2C8EBB" />
-        <path
-          d="M6.5 6.5C6.5 6.5 9.5 10.5 10 12.5V17.5H14V12.5C14.5 10.5 17.5 6.5 17.5 6.5H15L12 10.5L9 6.5H6.5Z"
-          fill="white"
-        />
-      </svg>
-    ),
+    icon: "/icons/yarn.svg",
   },
 ];
 
@@ -207,31 +164,47 @@ export function TemplateViewer({
   const activeFile = files.find((f) => f.target === activeFileId) || files[0];
 
   return (
-    <div className="flex flex-col gap-4 mb-10 w-full">
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-muted/60 dark:bg-muted/30 p-2 border border-border rounded-lg">
+    <div className="flex flex-col gap-3 mb-10 w-full">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-1">
         {/* Left side: Tabs */}
-        <div className="flex items-center gap-1 rounded-md bg-background p-1 border border-border shadow-sm">
+        <div className="flex items-center gap-1 p-1 bg-muted/30 rounded-lg border border-border/50 relative">
           <button
             onClick={() => setView("preview")}
             className={cn(
-              "flex items-center gap-2 rounded px-3 py-1.5 text-xs font-medium transition-colors",
+              "relative flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-200",
               view === "preview"
-                ? "bg-accent text-accent-foreground shadow-sm ring-1 ring-border"
-                : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
-            <Monitor className="size-3.5" /> Preview
+            {view === "preview" && (
+              <motion.div
+                layoutId="active-tab"
+                className="absolute inset-0 bg-background dark:bg-zinc-800/50 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.1)] dark:shadow-none border border-border/50 rounded-md"
+                transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+              />
+            )}
+            <Monitor className="relative z-10 size-3.5" />
+            <span className="relative z-10">Preview</span>
           </button>
           <button
             onClick={() => setView("code")}
             className={cn(
-              "flex items-center gap-2 rounded px-3 py-1.5 text-xs font-medium transition-colors",
+              "relative flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-colors duration-200",
               view === "code"
-                ? "bg-accent text-accent-foreground shadow-sm ring-1 ring-border"
-                : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
+                ? "text-foreground"
+                : "text-muted-foreground hover:text-foreground",
             )}
           >
-            <Code2 className="size-3.5" /> Code
+            {view === "code" && (
+              <motion.div
+                layoutId="active-tab"
+                className="absolute inset-0 bg-background dark:bg-zinc-800/50 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.1)] dark:shadow-none border border-border/50 rounded-md"
+                transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+              />
+            )}
+            <Code2 className="relative z-10 size-3.5" />
+            <span className="relative z-10">Code</span>
           </button>
         </div>
 
@@ -240,10 +213,15 @@ export function TemplateViewer({
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium shadow-sm hover:bg-muted/50 transition-colors"
+              className="flex items-center gap-1.5 rounded-md border border-border bg-background px-2 py-1.25 text-xs font-medium hover:bg-muted/50 transition-colors"
             >
-              {current.icon}
-              <span className="capitalize">{current.name}</span>
+              <Image
+                src={current.icon}
+                alt={current.name}
+                width={20}
+                height={20}
+              />
+              {/* <span className="capitalize">{current.name}</span> */}
               <ChevronDown className="size-3.5 opacity-50" />
             </button>
             {dropdownOpen && (
@@ -257,14 +235,15 @@ export function TemplateViewer({
                     }}
                     className="flex w-full items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-muted transition-colors capitalize"
                   >
-                    {p.icon} {p.name}
+                    <Image src={p.icon} alt={p.name} width={20} height={20} />
+                    {p.name}
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          <code className="rounded bg-background px-3 py-1.5 font-mono text-xs text-muted-foreground border border-border shadow-sm max-w-[340px] truncate hidden sm:block">
+          <code className="rounded bg-background px-2.5 py-1.5 font-mono text-xs text-muted-foreground border border-border max-w-[320px] truncate hidden sm:block">
             {fullCommand}
           </code>
           <Button
@@ -272,49 +251,51 @@ export function TemplateViewer({
             size="sm"
             onClick={handleCopy}
             className={cn(
-              "gap-2 text-xs transition-colors h-8",
+              "gap-1.5 text-[11px] transition-colors h-7 px-2",
               copied &&
                 "border-green-500/50 text-green-600 dark:text-green-400 bg-green-500/10",
             )}
           >
             {copied ? (
-              <Check className="size-4" />
+              <Check className="size-3" />
             ) : (
-              <Copy className="size-4" />
+              <Copy className="size-3" />
             )}
           </Button>
         </div>
       </div>
 
       {view === "preview" ? (
-        <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-muted/30 p-2">
+        <div className="relative w-full rounded-2xl border border-border bg-muted/30 p-2 overflow-hidden">
           <div className="flex items-center justify-end pb-2 px-1">
             <Link
               href={src}
               target="_blank"
-              className="flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               Open Preview <ArrowUpRight className="size-3.5" />
             </Link>
           </div>
-          <div className="h-[85dvh] w-full overflow-hidden rounded-xl border border-border bg-background relative isolate">
-            <iframe
-              src={src}
-              className="border-0 absolute inset-0"
-              style={{
-                width: "200%",
-                height: "200%",
-                transform: "scale(0.5)",
-                transformOrigin: "top left",
-              }}
-              title={`${name} Preview`}
-              loading="lazy"
-            />
+          <div className="h-[85dvh] w-full overflow-hidden rounded-xl border border-border bg-background relative isolate flex flex-col shadow-2xl shadow-black/5 dark:shadow-black/40">
+            <div className="flex-1 relative overflow-hidden bg-muted/5">
+              <iframe
+                src={src}
+                className="border-0 absolute inset-0"
+                style={{
+                  width: "200%",
+                  height: "200%",
+                  transform: "scale(0.5)",
+                  transformOrigin: "top left",
+                }}
+                title={`${name} Preview`}
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       ) : (
-        <div className="flex h-[600px] w-full rounded-xl border border-border bg-card shadow-sm">
-          <div className="w-[280px] shrink-0 border-r border-border bg-muted/10 p-3 overflow-y-auto">
+        <div className="flex h-[600px] w-full rounded-xl border border-border bg-card overflow-hidden">
+          <div className="w-[260px] shrink-0 border-r border-border bg-muted/10 p-2.5 overflow-y-auto">
             <FileTree
               className="border-0 bg-transparent"
               elements={fileTreeElements}

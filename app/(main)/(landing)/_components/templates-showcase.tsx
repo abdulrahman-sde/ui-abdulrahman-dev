@@ -17,7 +17,7 @@ function TemplateThumb({ t }: { t: Template }) {
 }
 
 export default function TemplatesShowcase() {
-  const featured = TEMPLATES.slice(0, 6);
+  const featured = TEMPLATES.slice(0, 2);
   return (
     <section id="templates" className="bg-background py-24">
       <div className="mx-auto max-w-3xl px-6">

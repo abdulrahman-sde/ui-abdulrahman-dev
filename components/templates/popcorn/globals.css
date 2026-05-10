@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: #1a1a1a;
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #dadada;
+  --color-surface-bright: #ffffff;
+  --color-surface-container: #f3f3f3;
+  --color-surface-elevated: #ffffff;
+  
+  --color-primary-content: #ffffff;
+
+  --color-accent-blue: #E6F0F9;
+  --color-accent-green: #EAF4EB;
+  --color-accent-purple: #F3E8FA;
+
+  /* Inverse / dark-bg section tokens (avoid "dark-" prefix — conflicts with dark: variant) */
+  --color-inverse: #1a1a1a;
+  --color-inverse-glass: rgba(255, 255, 255, 0.1);
+  --color-inverse-muted: rgba(255, 255, 255, 0.6);
+
+  --color-gradient-orb-1: rgba(96, 165, 250, 0.12);
+  --color-gradient-orb-2: rgba(192, 132, 252, 0.12);
+  --color-gradient-orb-3: rgba(129, 140, 248, 0.12);
+  --color-gradient-glow: rgba(96, 165, 250, 0.25);
+
+  --shadow-soft: 0 4px 40px rgba(0, 0, 0, 0.04);
+}
+
+:root {
+  /* Fallback Shadcn Variables — also consumed by Button gradient via var(--primary) */
+  --background: #f9f9f9;
+  --foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f3f3;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f3f3f3;
+  --muted-foreground: #737373;
+  --accent: #f3f3f3;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #1a1a1a;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-surface text-primary font-sans antialiased;
+  }
+}
+
+::selection {
+  @apply bg-primary/20;
+}
+
+.bg-dotted-map {
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 12px 12px;
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M200,200 Q400,100 800,150 T900,400 Q700,550 400,500 T150,400 Z' /%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='black' d='M200,200 Q400,100 800,150 T900,400 Q700,550 400,500 T150,400 Z' /%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+  background-size: 20px 20px;
+}

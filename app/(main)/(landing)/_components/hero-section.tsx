@@ -1,26 +1,22 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Search, Sparkles, Terminal } from "lucide-react";
-import {
-  MockNorthwind,
-  MockHalcyon,
-  MockAtelier,
-} from "@/components/shared/template-mock";
+import { ChevronRight, Search, Terminal } from "lucide-react";
 import Image from "next/image";
+import { TEMPLATES } from "@/constants/templates";
 
 export default function HeroSection() {
   return (
     <main className="overflow-hidden">
       <section className="bg-background relative">
         <div className="relative py-24 sm:py-26">
-          <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 aspect-square lg:top-24 dark:opacity-5">
+          <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 aspect-square lg:top-24 dark:opacity-30 dark:invert">
             <Image
               src="https://images.unsplash.com/photo-1740516367177-ae20098c8786?q=80&w=2268&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="hero background"
               width={2268}
               height={1740}
-              loading="eager"
-              className="size-full object-cover object-top"
+              priority
+              className="size-full object-cover object-top "
             />
           </div>
           <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
@@ -44,19 +40,25 @@ export default function HeroSection() {
               >
                 <BrowserWindow
                   className="absolute -right-8 top-2 w-[440px]"
-                  url="atelier.preview"
+                  url="glaze"
                   accent="oklch(0.45 0.05 270)"
                   variant="atelier"
+                  thumbnail={
+                    TEMPLATES.find((t) => t.slug === "glaze")?.thumbnail
+                  }
                 />
                 <div className="animate-float-a">
                   <BrowserWindow
                     className="absolute -right-2 top-14 w-[440px]"
-                    url="halcyon.preview"
+                    url="popcorn"
                     accent="oklch(0.78 0.16 65)"
                     variant="halcyon"
+                    thumbnail={
+                      TEMPLATES.find((t) => t.slug === "popcorn")?.thumbnail
+                    }
                   />
                 </div>
-                <div className="bg-card ring-border shadow-foreground/10 absolute left-4 top-3 z-20 min-w-64 rounded-2xl p-1 shadow-xl ring-1 dark:shadow-black/40 animate-float-b">
+                <div className="bg-card ring-border shadow-foreground/10 absolute left-4 top-4 z-20 min-w-64 rounded-2xl p-1 shadow-xl ring-1 dark:shadow-black/40 animate-float-b">
                   <div className="border-border/60 mb-1 flex items-center gap-2 border-b px-3 py-2">
                     <Search className="size-3.5 opacity-60" />
                     <span className="text-muted-foreground text-xs">
@@ -67,46 +69,48 @@ export default function HeroSection() {
                     </span>
                   </div>
                   <PickerRow
-                    swatch="oklch(0.85 0.16 159)"
-                    name="Northwind"
+                    swatch="oklch(0.75 0.16 45)"
+                    name="Nova"
                     cat="SaaS"
                     featured
+                    slug="nova"
                   />
                   <PickerRow
                     swatch="oklch(0.45 0.05 270)"
-                    name="Atelier"
-                    cat="Portfolio"
+                    name="Glaze"
+                    cat="Dashboard"
+                    slug="glaze"
                   />
                   <PickerRow
-                    swatch="oklch(0.78 0.16 65)"
-                    name="Halcyon"
-                    cat="Agency"
-                    featured
-                  />
-                  <PickerRow
-                    swatch="oklch(0.78 0.13 230)"
-                    name="Echo"
+                    swatch="oklch(0.85 0.16 159)"
+                    name="Popcorn"
                     cat="Mobile App"
+                    featured
+                    slug="popcorn"
                   />
                   <PickerRow
-                    swatch="oklch(0.72 0.18 12)"
-                    name="RSVP"
-                    cat="Waitlist"
+                    swatch="oklch(0.72 0.18 142)"
+                    name="Nexora"
+                    cat="AI Tool"
+                    slug="nexora"
                   />
                   <div className="border-border/60 mx-3 mt-1 border-t pt-2 pb-1">
                     <div className="bg-muted flex items-center gap-2 rounded-lg px-2.5 py-1.5">
                       <Terminal className="text-primary size-3 shrink-0" />
                       <span className="font-mono text-[9px] text-foreground/70 truncate">
-                        bunx shadcn add ui.abdulrahmanasif.dev/r/northwind.json
+                        bunx shadcn add ui.abdulrahmanasif.dev/r/nova.json
                       </span>
                     </div>
                   </div>
                 </div>
                 <div className="absolute bottom-3 left-2 z-10 w-[460px]">
                   <BrowserWindow
-                    url="templates"
+                    url="templates/nova"
                     accent="oklch(0.85 0.16 159)"
                     variant="northwind"
+                    thumbnail={
+                      TEMPLATES.find((t) => t.slug === "nova")?.thumbnail
+                    }
                   />
                 </div>
               </div>
@@ -117,11 +121,11 @@ export default function HeroSection() {
                 Free landing page templates.
               </h1>
               <p className="text-muted-foreground mt-4 text-balance">
-                A growing collection of clean, modern landing page templates.
-                Copy, customize, and ship.
+                A growing collection of modern landing page templates. Copy,
+                customize, and ship.
               </p>
               <Button className="mt-6 pr-1.5" asChild>
-                <Link href="#templates">
+                <Link href="/templates">
                   <span className="text-nowrap">Browse Templates</span>
                   <ChevronRight className="opacity-50" />
                 </Link>
@@ -146,14 +150,16 @@ function PickerRow({
   name,
   cat,
   featured,
+  slug,
 }: {
   swatch: string;
   name: string;
   cat: string;
   featured?: boolean;
+  slug?: string;
 }) {
-  return (
-    <div className="hover:bg-muted flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm">
+  const content = (
+    <div className="hover:bg-muted flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors">
       <span
         className="border-border size-5 shrink-0 rounded-md border"
         style={{
@@ -162,9 +168,13 @@ function PickerRow({
       />
       <span className="font-medium">{name}</span>
       <span className="text-muted-foreground text-xs">{cat}</span>
-      {/* {featured && <Sparkles className="ml-auto size-3 opacity-60" />} */}
     </div>
   );
+
+  if (slug) {
+    return <Link href={`/template/${slug}`}>{content}</Link>;
+  }
+  return content;
 }
 
 function BrowserWindow({
@@ -172,30 +182,38 @@ function BrowserWindow({
   url,
   accent,
   variant,
+  thumbnail,
 }: {
   className?: string;
   url: string;
   accent: string;
   variant: "northwind" | "halcyon" | "atelier";
+  thumbnail?: any;
 }) {
   return (
     <div
       className={`bg-card ring-border overflow-hidden rounded-2xl shadow-2xl shadow-black/15 ring-1 ${className}`}
     >
-      <div className="border-border/60 bg-card flex items-center gap-1.5 border-b px-3 py-2">
+      <div className="border-border/60 bg-card/50 backdrop-blur-sm flex items-center gap-1.5 border-b px-3 py-2">
         <span className="bg-muted-foreground/30 size-2 rounded-full" />
         <span className="bg-muted-foreground/30 size-2 rounded-full" />
         <span className="bg-muted-foreground/30 size-2 rounded-full" />
-        <div className="bg-muted ml-2 flex h-4 flex-1 items-center rounded px-2">
+        <div className="bg-muted/50 ml-2 flex h-4 flex-1 items-center rounded px-2">
           <span className="text-muted-foreground font-mono text-[9px]">
             ui.abdulrahmanasif.dev/{url}
           </span>
         </div>
       </div>
-      <div className="bg-background relative aspect-[16/10]">
-        {variant === "northwind" && <MockNorthwind accent={accent} />}
-        {variant === "halcyon" && <MockHalcyon accent={accent} />}
-        {variant === "atelier" && <MockAtelier accent={accent} />}
+      <div className="bg-background relative aspect-[16/10] w-full">
+        {thumbnail && (
+          <Image
+            src={thumbnail}
+            alt="Preview"
+            fill
+            sizes="(max-width: 768px) 100vw, 460px"
+            className="object-cover object-top opacity-90 transition-all dark:invert dark:hue-rotate-180"
+          />
+        )}
       </div>
     </div>
   );

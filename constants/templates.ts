@@ -1,17 +1,9 @@
 import type { Template } from "@/types/template";
 import nexoraThumbnail from "@/public/thumbnails/nexora.png";
 import novaThumbnail from "@/public/thumbnails/nova.png";
-
+import popcornThumbnail from "@/public/thumbnails/popcorn.png";
+import glazeThumbnail from "@/public/thumbnails/glaze.png";
 export const TEMPLATES: Template[] = [
-  {
-    slug: "nexora",
-    title: "Nexora",
-    description:
-      "An AI image generation landing page with hero, core features, how it works, pricing, and footer sections.",
-    color: "mint",
-    accent: "hsl(142.1 70.6% 45.3%)",
-    thumbnail: nexoraThumbnail,
-  },
   {
     slug: "nova",
     title: "Nova",
@@ -20,6 +12,34 @@ export const TEMPLATES: Template[] = [
     color: "amber",
     accent: "hsl(38.6 92.1% 50.2%)",
     thumbnail: novaThumbnail,
+  },
+  {
+    slug: "popcorn",
+    title: "Popcorn",
+    description:
+      "A clean, modern landing page for global services with coverage map, features, and testimonials.",
+    color: "amber",
+    accent: "hsl(45 93% 47%)",
+    thumbnail: popcornThumbnail,
+  },
+  {
+    slug: "glaze",
+    title: "Glaze",
+    description:
+      "A sleek, dark-themed landing page with glassmorphism effects.",
+    color: "zinc",
+    accent: "hsl(0 0% 100%)",
+    thumbnail: glazeThumbnail,
+  },
+
+  {
+    slug: "nexora",
+    title: "Nexora",
+    description:
+      "An AI image generation landing page with hero, core features, how it works, pricing, and footer sections.",
+    color: "mint",
+    accent: "hsl(142.1 70.6% 45.3%)",
+    thumbnail: nexoraThumbnail,
   },
 ];
 

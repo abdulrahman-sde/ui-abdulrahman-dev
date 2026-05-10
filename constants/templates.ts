@@ -7,6 +7,8 @@ export const TEMPLATES: Template[] = [
     title: "Nexora",
     description:
       "An AI image generation landing page with hero, core features, how it works, pricing, and footer sections.",
+    color: "mint",
+    accent: "hsl(142.1 70.6% 45.3%)",
     thumbnail: nexoraThumbnail,
   },
   {
@@ -14,6 +16,8 @@ export const TEMPLATES: Template[] = [
     title: "Nova",
     description:
       "A premium SaaS landing page with hero, features, content, pricing, and FAQ sections.",
+    color: "amber",
+    accent: "hsl(38.6 92.1% 50.2%)",
     thumbnail: nexoraThumbnail,
   },
 ];

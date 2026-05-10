@@ -107,8 +107,8 @@ export default function NotFoundView() {
                 <div className="border-border flex items-center justify-between border-t px-4 py-3">
                   <div>
                     <p className="text-sm font-medium">{t.title}</p>
-                    <p className="text-muted-foreground text-xs">
-                      {t.category}
+                    <p className="text-muted-foreground text-xs line-clamp-1">
+                      {t.description}
                     </p>
                   </div>
                   <ArrowUpRight className="size-4 opacity-30 transition group-hover:opacity-100" />

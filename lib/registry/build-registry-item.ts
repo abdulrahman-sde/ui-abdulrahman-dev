@@ -21,27 +21,16 @@ const METAS: Record<string, TemplateMeta> = {
       "clsx",
       "tailwind-merge",
       "motion",
-      "@radix-ui/react-accordion",
-      "@radix-ui/react-slot",
-      "class-variance-authority",
       "tw-animate-css",
     ],
+    registryDependencies: ["accordion", "button", "card"],
   },
-  launchui: {
-    name: "launchui",
-    title: "Launch UI",
+  nexora: {
+    name: "nexora",
+    title: "Nexora",
     description:
       "A full landing page template with hero, logos, feature grid, stats, pricing, FAQ, CTA, and footer. Built with React, Shadcn/ui and Tailwind.",
-    dependencies: [
-      "lucide-react",
-      "class-variance-authority",
-      "clsx",
-      "tailwind-merge",
-      "@radix-ui/react-slot",
-      "@radix-ui/react-accordion",
-      "@radix-ui/react-dialog",
-      "tw-animate-css",
-    ],
+    dependencies: ["tw-animate-css"],
   },
 };
 

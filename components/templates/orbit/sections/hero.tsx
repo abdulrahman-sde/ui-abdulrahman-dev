@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 import { IconPlaceholder } from "./icon-placeholder";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -61,23 +59,25 @@ export function HeroSection() {
             },
           }}
         >
-          {"Manage your entire workflow in one place".split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              className="inline-block"
-              variants={{
-                hidden: { opacity: 0, y: 15, filter: "blur(4px)" },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
-                },
-              }}
-            >
-              {word}&nbsp;
-            </motion.span>
-          ))}
+          {"Manage your entire workflow in one place"
+            .split(" ")
+            .map((word, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                variants={{
+                  hidden: { opacity: 0, y: 15, filter: "blur(4px)" },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
+                  },
+                }}
+              >
+                {word}&nbsp;
+              </motion.span>
+            ))}
         </motion.h1>
 
         <motion.p
@@ -94,26 +94,28 @@ export function HeroSection() {
             },
           }}
         >
-          {"A unified platform to plan, execute, and track all your team's projects with powerful automation and insights.".split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              className="inline-block"
-              variants={{
-                hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
-                },
-              }}
-            >
-              {word}&nbsp;
-            </motion.span>
-          ))}
+          {"A unified platform to plan, execute, and track all your team's projects with powerful automation and insights."
+            .split(" ")
+            .map((word, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                variants={{
+                  hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
+                  },
+                }}
+              >
+                {word}&nbsp;
+              </motion.span>
+            ))}
         </motion.p>
 
-        <motion.div 
+        <motion.div
           className="flex w-fit items-center justify-center gap-3 pt-4"
           initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -171,7 +173,7 @@ export function HeroSection() {
                 alt="Dashboard screen preview"
                 className="z-2 aspect-video w-full rounded-[calc(2.5rem-0.5rem)] object-cover"
                 height="1080"
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                src="https://i.postimg.cc/1RLJhP8H/orbit.png"
                 width="1920"
               />
             </div>

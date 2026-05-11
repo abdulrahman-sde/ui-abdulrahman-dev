@@ -3,15 +3,8 @@ import nexoraThumbnail from "@/public/thumbnails/nexora.png";
 import novaThumbnail from "@/public/thumbnails/nova.png";
 import popcornThumbnail from "@/public/thumbnails/popcorn.png";
 import glazeThumbnail from "@/public/thumbnails/glaze.png";
+import orbitThumbnail from "@/public/thumbnails/orbit.png";
 export const TEMPLATES: Template[] = [
-  {
-    title: "Orbit",
-    slug: "orbit",
-    description:
-      "Modern SaaS landing page template with global reach visualization.",
-    color: "slate",
-    accent: "neutral",
-  },
   {
     slug: "nova",
     title: "Nova",
@@ -29,6 +22,15 @@ export const TEMPLATES: Template[] = [
     color: "amber",
     accent: "hsl(45 93% 47%)",
     thumbnail: popcornThumbnail,
+  },
+  {
+    title: "Orbit",
+    slug: "orbit",
+    description:
+      "Modern SaaS landing page template with global reach visualization.",
+    color: "slate",
+    accent: "neutral",
+    thumbnail: orbitThumbnail,
   },
   {
     slug: "glaze",

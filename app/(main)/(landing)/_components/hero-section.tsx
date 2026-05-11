@@ -98,7 +98,7 @@ export default function HeroSection() {
                     <div className="bg-muted flex items-center gap-2 rounded-lg px-2.5 py-1.5">
                       <Terminal className="text-primary size-3 shrink-0" />
                       <span className="font-mono text-[9px] text-foreground/70 truncate">
-                        bunx shadcn add ui.abdulrahmanasif.dev/r/nova.json
+                        bunx shadcn add kairoui.online/r/nova.json
                       </span>
                     </div>
                   </div>
@@ -200,7 +200,7 @@ function BrowserWindow({
         <span className="bg-muted-foreground/30 size-2 rounded-full" />
         <div className="bg-muted/50 ml-2 flex h-4 flex-1 items-center rounded px-2">
           <span className="text-muted-foreground font-mono text-[9px]">
-            ui.abdulrahmanasif.dev/{url}
+            kairoui.online/{url}
           </span>
         </div>
       </div>

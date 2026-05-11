@@ -5,6 +5,13 @@ import popcornThumbnail from "@/public/thumbnails/popcorn.png";
 import glazeThumbnail from "@/public/thumbnails/glaze.png";
 export const TEMPLATES: Template[] = [
   {
+    title: "Efferd",
+    slug: "efferd",
+    description: "Modern landing page template with global reach visualization.",
+    color: "slate",
+    accent: "neutral",
+  },
+  {
     slug: "nova",
     title: "Nova",
     description:

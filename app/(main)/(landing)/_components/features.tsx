@@ -1,9 +1,32 @@
 "use client";
 import { useState } from "react";
-import { Copy, Code2, Sparkles, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+
+const CopyIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="12" height="12" rx="2" fill="#6366F1" fillOpacity="0.15" stroke="#6366F1" strokeWidth="1.5" />
+    <rect x="4" y="4" width="12" height="12" rx="2" fill="#818CF8" fillOpacity="0.2" stroke="#818CF8" strokeWidth="1.5" />
+    <path stroke="#6366F1" strokeWidth="1.5" strokeLinecap="round" d="M8 9h4M8 12h6" />
+  </svg>
+);
+
+const CodeIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M8 7 3 12l5 5" />
+    <path stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M16 7l5 5-5 5" />
+    <path stroke="#34D399" strokeWidth="1.5" strokeLinecap="round" d="M14 4 10 20" />
+  </svg>
+);
+
+const SparkleIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#F59E0B" d="M12 2 13.5 9.5 21 12l-7.5 2.5L12 22l-1.5-7.5L3 12l7.5-2.5Z" />
+    <circle cx="19" cy="5" r="1.5" fill="#FCD34D" />
+    <circle cx="5" cy="19" r="1" fill="#FCD34D" />
+  </svg>
+);
 
 type Feature =
   | "free-forever"
@@ -41,17 +64,17 @@ export default function Features() {
                 {
                   id: "copy-paste",
                   label: "Copy & Paste Ready",
-                  icon: <Copy className="size-4" />,
+                  icon: <CopyIcon className="size-4" />,
                 },
                 {
                   id: "developer-first",
                   label: "Developer-first",
-                  icon: <Code2 className="size-4" />,
+                  icon: <CodeIcon className="size-4" />,
                 },
                 {
                   id: "always-growing",
                   label: "Always Growing",
-                  icon: <Sparkles className="size-4" />,
+                  icon: <SparkleIcon className="size-4" />,
                 },
               ] as { id: Feature; label: string; icon: React.ReactNode }[]
             ).map((it) => (
@@ -183,11 +206,29 @@ function GrowingIllo() {
       aria-hidden
       className="relative flex size-44 items-center justify-center mx-auto"
     >
-      <Sparkles className="absolute size-full opacity-10" strokeWidth={0.4} />
-      <Sparkles
-        className="size-32 fill-card dark:fill-foreground/10 stroke-border drop-shadow-xl"
-        strokeWidth={0.6}
-      />
+      {/* Background star burst */}
+      <svg viewBox="0 0 200 200" className="absolute size-full opacity-10" fill="none">
+        {Array.from({ length: 12 }).map((_, i) => {
+          const angle = (i * 30 * Math.PI) / 180;
+          return (
+            <line
+              key={i}
+              x1="100" y1="100"
+              x2={100 + Math.cos(angle) * 95}
+              y2={100 + Math.sin(angle) * 95}
+              stroke="#F59E0B" strokeWidth="0.8" strokeLinecap="round"
+            />
+          );
+        })}
+      </svg>
+      {/* Foreground colorful star */}
+      <svg viewBox="0 0 24 24" className="size-28 drop-shadow-xl" fill="none">
+        <path fill="#F59E0B" fillOpacity="0.9" d="M12 2 13.8 9.2 21 12l-7.2 2.8L12 22l-1.8-7.2L3 12l7.2-2.8Z" />
+        <path fill="#FCD34D" fillOpacity="0.6" d="M12 5 13.2 9.8 18 12l-4.8 1.8L12 19l-1.2-5.2L6 12l4.8-1.8Z" />
+        <circle cx="19" cy="5" r="2" fill="#F59E0B" />
+        <circle cx="5" cy="19" r="1.5" fill="#FCD34D" />
+        <circle cx="20" cy="18" r="1" fill="#F59E0B" fillOpacity="0.6" />
+      </svg>
     </div>
   );
 }

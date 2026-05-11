@@ -40,7 +40,7 @@ app/
 │   ├── template/[slug]/page.tsx     ← /template/<slug>  (detail page, iframes the live route)
 │   ├── r/[name]/route.ts            ← /r/<slug>.json  (shadcn install endpoint, force-static)
 │   └── not-found.tsx
-└── templates/<slug>/(pages)/        ← Per-template root layout (one per template)
+└── templates/<slug>/        ← Per-template root layout (one per template)
     ├── layout.tsx                   ← Own <html>, dark class, template's globals.css, fonts
     └── page.tsx                     ← Live template — also the iframe target for the detail page
 ```
@@ -49,7 +49,7 @@ Why two roots:
 
 - The marketing site needs `next-themes`, the chrome header, and the marketing tokens.
 - A template preview must be a fully isolated document — its own `<html>`, its own CSS variables, its own `dark` scope. No bleed from the marketing theme.
-- Putting the live template at `app/templates/<slug>/(pages)/` makes it a **second root layout** (because no `app/layout.tsx` overrides it). Navigation between `/templates` (in `(main)`) and `/templates/<slug>` (the live template) is a full page reload — exactly what you want for an iframe target.
+- Putting the live template at `app/templates/<slug>/` makes it a **second root layout** (because no `app/layout.tsx` overrides it). Navigation between `/templates` (in `(main)`) and `/templates/<slug>` (the live template) is a full page reload — exactly what you want for an iframe target.
 - The detail page at `/template/<slug>` (singular) iframes `/templates/<slug>` (plural). That's the visual disambiguation: singular = marketing detail, plural = live template.
 
 ## Templates: source of truth and install flow
@@ -60,7 +60,7 @@ components/templates/<slug>/         ← All template source code
 ├── sections/                        ← Page sections (hero, nav, footer, …)
 └── ui/                              ← Template-private primitives (button, badge, glow, …)
 
-app/templates/<slug>/(pages)/        ← The route's layout + page (also shipped to users)
+app/templates/<slug>/        ← The route's layout + page (also shipped to users)
 ├── layout.tsx                       ← imports "@/components/templates/<slug>/globals.css"
 └── page.tsx                         ← imports section components
 
@@ -72,7 +72,7 @@ constants/templates.ts               ← TEMPLATES array — gallery metadata fo
 `/r/<slug>.json` is built by `lib/registry/build-registry-item.ts`:
 
 1. Walks `components/templates/<slug>/**` and ships every file. `globals.css` retargets to `app/globals.css`; everything else keeps its source path (so `import "@/components/templates/<slug>/ui/button"` works the same in dev and after install — **path parity**).
-2. Walks `app/templates/<slug>/(pages)/{layout.tsx,page.tsx}` and retargets them to `app/layout.tsx` and `app/page.tsx`.
+2. Walks `app/templates/<slug>/{layout.tsx,page.tsx}` and retargets them to `app/layout.tsx` and `app/page.tsx`.
 3. **Rewrites the layout's `globals.css` import** from `@/components/templates/<slug>/globals.css` → `./globals.css` so it resolves once installed (where `layout.tsx` and `globals.css` both live under `app/`).
 4. `METAS` in the same file holds per-slug `dependencies`, `title`, `description`. Add a new entry when adding a template.
 
@@ -80,7 +80,7 @@ constants/templates.ts               ← TEMPLATES array — gallery metadata fo
 
 1. Add metadata to `constants/templates.ts`.
 2. Create `components/templates/<slug>/` with `globals.css` (with `:root`/`.dark` token blocks), `sections/`, `ui/`. All internal imports must use `@/components/templates/<slug>/...` — these strings ship verbatim and resolve identically here and in user projects.
-3. Create `app/templates/<slug>/(pages)/{layout.tsx,page.tsx}`. The layout imports `@/components/templates/<slug>/globals.css` (the registry builder rewrites this on ship).
+3. Create `app/templates/<slug>/{layout.tsx,page.tsx}`. The layout imports `@/components/templates/<slug>/globals.css` (the registry builder rewrites this on ship).
 4. Add a `METAS[<slug>]` entry in `lib/registry/build-registry-item.ts` with `dependencies` (every npm package the template's components import — including `clsx`, `tailwind-merge` if `@/lib/utils` is used).
 5. The gallery `Link` already targets `/template/<slug>`; the detail page reads from `TEMPLATES`; no further wiring needed.
 

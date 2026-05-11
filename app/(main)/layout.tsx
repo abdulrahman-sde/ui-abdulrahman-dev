@@ -20,7 +20,7 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ui.abdulrahmanasif.dev — Free landing page templates",
+  title: "kairoui.online — Free landing page templates",
   description: "Free, MIT-licensed landing page templates. Browse and fork.",
 };
 

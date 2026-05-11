@@ -73,7 +73,7 @@ export default function Footer() {
 
       <div className="border-border mx-auto mt-10 flex max-w-5xl flex-col items-center justify-between gap-3 border-t px-6 pt-6 text-xs sm:flex-row">
         <p className="text-muted-foreground">
-          © 2026 ui.abdulrahmanasif.dev — Built with care.
+          © 2026 kairoui.online — Built with care.
         </p>
         <p className="text-muted-foreground font-mono">
           Built in public. <span className="text-primary">●</span> Online

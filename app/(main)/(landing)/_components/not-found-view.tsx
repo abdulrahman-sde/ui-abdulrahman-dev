@@ -38,7 +38,7 @@ export default function NotFoundView() {
               <span className="bg-muted-foreground/30 size-2 rounded-full" />
               <div className="bg-muted ml-2 flex h-4 flex-1 items-center rounded px-2">
                 <span className="text-muted-foreground font-mono text-[9px]">
-                  ui.abdulrahmanasif.dev/lost-in-the-grid
+                  kairoui.online/lost-in-the-grid
                 </span>
               </div>
             </div>

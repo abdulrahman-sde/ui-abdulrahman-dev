@@ -7,7 +7,7 @@ import { highlight } from "@/lib/registry/highlight";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-const REGISTRY_BASE = "https://ui.abdulrahmanasif.dev";
+const REGISTRY_BASE = "https://www.kairoui.online";
 
 export async function generateStaticParams() {
   return TEMPLATES.map((t) => ({ slug: t.slug }));
@@ -22,7 +22,7 @@ export async function generateMetadata({
   const t = TEMPLATES.find((x) => x.slug === slug);
   if (!t) return { title: "Template" };
   return {
-    title: `${t.title} — ui.abdulrahmanasif.dev`,
+    title: `${t.title} — kairoui.online`,
     description: t.description,
   };
 }

@@ -1,7 +1,7 @@
 import { IconPlaceholder } from "./icon-placeholder";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
-import { Logo } from "@/components/logo";
+import { Logo } from "@/components/templates/orbit/ui/logo";
 
 type FooterLink = {
   title: string;

@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/templates/efferd/sections/hero";
 import { LogosSection } from "@/components/templates/efferd/sections/logos-section";
 import { FeatureSection } from "@/components/templates/efferd/sections/feature-section";
 import { Integrations } from "@/components/templates/efferd/sections/integrations";
-import { FaqsSection } from "@/components/templates/efferd/sections/faqs-section";
 import { CallToAction } from "@/components/templates/efferd/sections/cta";
 import { Footer } from "@/components/templates/efferd/sections/footer";
 

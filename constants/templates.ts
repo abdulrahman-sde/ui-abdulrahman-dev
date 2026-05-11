@@ -7,7 +7,8 @@ export const TEMPLATES: Template[] = [
   {
     title: "Efferd",
     slug: "efferd",
-    description: "Modern landing page template with global reach visualization.",
+    description:
+      "Modern landing page template with global reach visualization.",
     color: "slate",
     accent: "neutral",
   },

@@ -1,7 +1,7 @@
 import { IconPlaceholder } from "./icon-placeholder";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
-import { Logo } from "./logo";
+import { Logo } from "@/components/logo";
 
 type FooterLink = {
   title: string;
@@ -105,7 +105,7 @@ export function Footer() {
   return (
     <footer
       className={cn(
-        "md:rounded-t-6xl relative mx-auto flex w-full max-w-5xl flex-col items-center justify-center rounded-t-4xl border-t px-6 md:px-8",
+        "md:rounded-t-6xl relative mx-auto flex w-full mt-20 pt-10 max-w-5xl flex-col items-center justify-center rounded-t-4xl border-t px-6 md:px-8",
         "dark:bg-[radial-gradient(35%_128px_at_50%_0%,--theme(--color-foreground/.1),transparent)]",
       )}
     >
@@ -115,7 +115,7 @@ export function Footer() {
         <div className="space-y-4">
           <Logo className="h-4" />
           <p className="text-muted-foreground mt-8 text-sm md:mt-0">
-            Beautify your app with efferd.
+            The operating system for modern teams.
           </p>
         </div>
 
@@ -123,28 +123,28 @@ export function Footer() {
           {footerLinks.map((section, index) => (
             <div className="mb-10 md:mb-0" key={section.label}>
               <h3 className="text-xs">{section.label}</h3>
-                <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        className="hover:text-foreground inline-flex items-center duration-250 [&_svg]:me-1 [&_svg]:size-4"
-                        href={link.href}
-                        key={`${section.label}-${link.title}`}
-                      >
-                        {link.icon}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="text-muted-foreground mt-4 space-y-2 text-sm">
+                {section.links.map((link) => (
+                  <li key={link.title}>
+                    <a
+                      className="hover:text-foreground inline-flex items-center duration-250 [&_svg]:me-1 [&_svg]:size-4"
+                      href={link.href}
+                      key={`${section.label}-${link.title}`}
+                    >
+                      {link.icon}
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
       <div className="via-border h-px w-full bg-linear-to-r" />
       <div className="flex w-full items-center justify-center py-4">
         <p className="text-muted-foreground text-sm">
-          &copy; {new Date().getFullYear()} efferd, All rights reserved
+          &copy; {new Date().getFullYear()} Orbit, All rights reserved
         </p>
       </div>
     </footer>

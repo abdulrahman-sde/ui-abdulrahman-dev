@@ -1,10 +1,15 @@
 import { IconPlaceholder } from "./icon-placeholder";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Portal, PortalBackdrop } from "@/components/templates/efferd/ui/portal";
+import { Portal, PortalBackdrop } from "@/components/templates/orbit/ui/portal";
 import { Button } from "@/components/ui/button";
-import { companyLinks, companyLinks2, productLinks } from "./nav-links";
-import { LinkItem } from "./sheard";
+
+const links = [
+  { label: "Features", href: "#features" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Company", href: "#company" },
+  { label: "Blog", href: "#blog" },
+];
 
 export function MobileNav() {
 	const [open, setOpen] = React.useState(false);
@@ -54,41 +59,27 @@ export function MobileNav() {
 					<PortalBackdrop />
 					<div
 						className={cn(
-							"size-full overflow-y-auto p-4",
+							"size-full overflow-y-auto p-6",
 							"data-[slot=open]:zoom-in-97 ease-out data-[slot=open]:animate-in"
 						)}
 						data-slot={open ? "open" : "closed"}
 					>
-						<div className="flex w-full flex-col gap-y-2">
-							<span className="text-sm">Product</span>
-							{productLinks.map((link) => (
-								<LinkItem
-									className="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50"
-									key={`product-${link.label}`}
-									{...link}
-								/>
-							))}
-							<span className="text-sm">Company</span>
-							{companyLinks.map((link) => (
-								<LinkItem
-									className="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50"
-									key={`company-${link.label}`}
-									{...link}
-								/>
-							))}
-							{companyLinks2.map((link) => (
-								<LinkItem
-									className="rounded-lg p-2 active:bg-muted dark:active:bg-muted/50"
-									key={`company-${link.label}`}
-									{...link}
-								/>
+						<div className="flex w-full flex-col gap-y-4">
+							{links.map((link) => (
+								<a
+									key={link.label}
+									href={link.href}
+									className="text-lg font-medium text-foreground py-2 border-b border-border/50 active:scale-[0.97] transition-transform duration-[160ms] ease-[var(--ease-out)]"
+								>
+									{link.label}
+								</a>
 							))}
 						</div>
-						<div className="mt-5 flex flex-col gap-2">
-							<Button className="w-full" variant="outline">
+						<div className="mt-8 flex flex-col gap-3">
+							<Button className="w-full h-12 text-base active:scale-[0.97] transition-transform duration-[160ms] ease-[var(--ease-out)]" variant="outline">
 								Sign In
 							</Button>
-							<Button className="w-full">Get Started</Button>
+							<Button className="w-full h-12 text-base active:scale-[0.97] transition-transform duration-[160ms] ease-[var(--ease-out)]">Get Started</Button>
 						</div>
 					</div>
 				</Portal>

@@ -11,12 +11,12 @@ const ROOT = process.cwd();
 const SCHEMA = "https://ui.shadcn.com/schema/registry-item.json";
 
 const METAS: Record<string, TemplateMeta> = {
-  efferd: {
-    name: "efferd",
-    title: "Efferd",
-    description: "A modern, global landing page template.",
+  orbit: {
+    name: "orbit",
+    title: "Orbit",
+    description: "A modern SaaS landing page template with global reach visualization.",
     dependencies: ["lucide-react", "motion", "cobe"],
-    registryDependencies: ["accordion", "button", "card", "navigation-menu"],
+    registryDependencies: ["accordion", "button", "card"],
   },
   nova: {
     name: "nova",

@@ -53,11 +53,13 @@ function FeatureCard({
 	return (
 		<div
 			className={cn(
-				"group relative overflow-hidden rounded-2xl border bg-background px-8 pt-8 pb-6",
+				"group relative overflow-hidden rounded-[2.5rem] p-[0.375rem] border bg-background/5 ring-1 ring-foreground/5 shadow-sm inset-shadow-2xs",
 				className
 			)}
 		>
-			{children}
+			<div className="relative h-full w-full rounded-[calc(2.5rem-0.375rem)] border border-foreground/10 bg-background pt-8 pb-6 px-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+				{children}
+			</div>
 		</div>
 	);
 }
@@ -65,7 +67,7 @@ function FeatureCard({
 function FeatureTitle({ className, ...props }: React.ComponentProps<"h3">) {
 	return (
 		<h3
-			className={cn("font-medium text-foreground text-lg", className)}
+			className={cn("font-medium text-foreground text-base tracking-tight leading-none", className)}
 			{...props}
 		/>
 	);
@@ -76,22 +78,22 @@ function FeatureDescription({
 	...props
 }: React.ComponentProps<"p">) {
 	return (
-		<p className={cn("text-muted-foreground text-sm", className)} {...props} />
+		<p className={cn("text-muted-foreground text-sm leading-relaxed max-w-[40ch]", className)} {...props} />
 	);
 }
 
 function SetupVisual() {
 	return (
 		<>
-			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border-4 border-dashed bg-background shadow-xs outline outline-border outline-offset-4">
+			<div className="relative mx-auto flex size-16 items-center justify-center rounded-full border-4 border-dashed bg-background shadow-xs outline outline-border outline-offset-4">
 				<div className="absolute inset-0 z-10 scale-120 bg-radial from-foreground/20 via-foreground/5 to-transparent blur-xl" />
-				<CustomTimerIcon className="size-14 fill-primary/90" />
+				<CustomTimerIcon className="size-8 fill-primary/90" />
 			</div>
 
 			<div className="relative mt-8 space-y-1.5 text-center">
-				<FeatureTitle>2 Minutes Setup</FeatureTitle>
+				<FeatureTitle>Instant Setup</FeatureTitle>
 				<FeatureDescription>
-					Get your company&apos;s Account up and running in under 2 minutes.
+					Get your entire team onboarded and ready to work in just a few clicks.
 				</FeatureDescription>
 			</div>
 		</>
@@ -101,16 +103,16 @@ function SetupVisual() {
 function UserBasedSecurity() {
 	return (
 		<>
-			<div className="relative mx-auto flex size-32 items-center justify-center rounded-full border bg-background shadow-xs outline outline-border outline-offset-4">
-				<CustomLockIcon className="size-24" />
+			<div className="relative mx-auto flex size-16 items-center justify-center rounded-full border bg-background shadow-xs outline outline-border outline-offset-4">
+				<CustomLockIcon className="size-10" />
 				<div className="absolute inset-0 scale-120 bg-radial from-foreground/15 via-foreground/5 to-transparent blur-xl" />
 			</div>
 
 			<div className="relative mt-8 space-y-1.5 text-center">
-				<FeatureTitle>User-Based Security</FeatureTitle>
+				<FeatureTitle>Enterprise Security</FeatureTitle>
 				<FeatureDescription>
-					Grant specific permissions to users based on their roles and
-					responsibilities.
+					Protect your data with role-based access control and
+					enterprise-grade encryption.
 				</FeatureDescription>
 			</div>
 		</>
@@ -134,12 +136,12 @@ function ReportsVisual() {
 					</div>
 					<div className="font-medium text-muted-foreground">4.5%</div>
 				</div>
-				<ReportsChartsSvg className="translate-x-[5%] -rotate-2 scale-150" />
+				<ReportsChartsSvg className="translate-x-[5%] -rotate-2 scale-125 md:scale-150" />
 			</div>
 			<div className="relative z-10 mt-8 space-y-1.5 text-center">
-				<FeatureTitle>Reports & Analytics</FeatureTitle>
+				<FeatureTitle>Advanced Analytics</FeatureTitle>
 				<FeatureDescription>
-					Get detailed insights and analytics to make data-driven decisions
+					Gain actionable insights into your team&apos;s performance with customizable dashboards.
 				</FeatureDescription>
 			</div>
 		</>
@@ -149,10 +151,10 @@ function ReportsVisual() {
 function DashboardVisual() {
 	return (
 		<div className="grid h-full sm:grid-cols-2">
-			<div className="relative z-10 space-y-6 py-8 ps-8 pe-2">
-				<div className="flex size-12 items-center justify-center rounded-full border bg-card shadow-xs outline outline-border/80 outline-offset-2">
+			<div className="relative z-10 space-y-6 py-6 ps-8 pe-2">
+				<div className="flex size-8 items-center justify-center rounded-full border bg-card shadow-xs outline outline-border/80 outline-offset-2">
 					<IconPlaceholder
-						className="size-5 text-primary/80"
+						className="size-3 text-primary/80"
 						hugeicons="Mouse01Icon"
 						lucide="SquareMousePointerIcon"
 						phosphor="CursorClickIcon"
@@ -161,31 +163,24 @@ function DashboardVisual() {
 					/>
 				</div>
 				<div className="space-y-2">
-					<FeatureTitle className="text-base">
-						Sleek & Intuitive Design
+					<FeatureTitle className="text-xl md:text-xl">
+						Intuitive Interface
 					</FeatureTitle>
 					<FeatureDescription>
-						Manage & scale your business effortlessly using our user-friendly
-						interface.
+						Navigate your workflow effortlessly with our beautiful,
+						meticulously crafted design.
 					</FeatureDescription>
 				</div>
 			</div>
 			{/* Dashboard Screen */}
 			<div className="mask-b-from-90% mask-r-from-90% relative aspect-video sm:aspect-auto">
-				<div className="absolute -right-1 -bottom-1 aspect-video max-h-50 rounded-tl-md border bg-card p-1 sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12">
-					<div className="aspect-video h-full overflow-hidden rounded-tl-sm border *:pointer-events-none *:size-full *:shrink-0 *:select-none">
+				<div className="absolute -right-1 -bottom-1 aspect-video max-h-50 rounded-tl-3xl border border-foreground/10 bg-card p-1 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] sm:max-h-42 md:aspect-square md:max-h-50 lg:aspect-16/12">
+					<div className="aspect-video h-full overflow-hidden rounded-tl-[calc(1.5rem-4px)] border border-foreground/10 *:pointer-events-none *:size-full *:shrink-0 *:select-none object-cover">
 						<img
 							alt="Dashboard preview"
-							className="dark:hidden"
+							className="object-cover"
 							height={360}
-							src="https://storage.efferd.com/screen/dashboard-light.webp"
-							width={640}
-						/>
-						<img
-							alt="Dashboard preview"
-							className="hidden dark:block"
-							height={360}
-							src="https://storage.efferd.com/screen/dashboard-dark.webp"
+							src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
 							width={640}
 						/>
 					</div>
@@ -198,10 +193,10 @@ function DashboardVisual() {
 function PresenceVisual() {
 	return (
 		<div className="grid max-h-120 sm:grid-cols-2">
-			<div className="space-y-6 pt-8 pb-4 pl-8 sm:pb-8">
-				<div className="flex size-12 items-center justify-center rounded-full border bg-card shadow-xs outline outline-border/80 outline-offset-2">
+			<div className="space-y-6 pt-6 pb-4 pl-8 sm:pb-8">
+				<div className="flex size-8 items-center justify-center rounded-full border bg-card shadow-xs outline outline-border/80 outline-offset-2">
 					<IconPlaceholder
-						className="size-5 text-primary/80"
+						className="size-3 text-primary/80"
 						hugeicons="Globe02Icon"
 						lucide="GlobeIcon"
 						phosphor="GlobeIcon"
@@ -210,12 +205,12 @@ function PresenceVisual() {
 					/>
 				</div>
 				<div className="space-y-2">
-					<FeatureTitle className="text-base">
-						Access Anytime, Anywhere
+					<FeatureTitle className="text-xl md:text-xl">
+						Global Availability
 					</FeatureTitle>
 					<FeatureDescription>
-						Stay connected to your business no matter where you are, with our
-						cloud-based access.
+						Access your workspace from anywhere in the world with our
+						reliable edge network.
 					</FeatureDescription>
 				</div>
 			</div>

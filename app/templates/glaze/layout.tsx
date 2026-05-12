@@ -13,11 +13,7 @@ export default function GlazeLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${interFont.variable} min-h-screen`}
-      >
-        {children}
-      </body>
+      <body className={`${interFont.variable} min-h-screen`}>{children}</body>
     </html>
   );
 }

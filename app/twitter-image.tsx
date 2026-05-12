@@ -9,4 +9,3 @@ export const size = {
 export const contentType = "image/png";
 
 export default Image;
-

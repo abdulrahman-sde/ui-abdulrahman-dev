@@ -1,14 +1,12 @@
-import Image, {
-  alt as ogAlt,
-  contentType as ogContentType,
-  runtime as ogRuntime,
-  size as ogSize,
-} from "./opengraph-image";
+import Image from "./opengraph-image";
 
-export const runtime = ogRuntime;
-export const alt = ogAlt;
-export const size = ogSize;
-export const contentType = ogContentType;
+export const runtime = "edge";
+export const alt = "Kairo UI - Free landing page templates";
+export const size = {
+  width: 1200,
+  height: 630,
+};
+export const contentType = "image/png";
 
 export default Image;
 

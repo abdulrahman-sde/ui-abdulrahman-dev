@@ -20,6 +20,7 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.kairoui.online"),
   title: "Kairo UI — Modern, Next.js Landing Page Templates",
   description:
     "Explore a curated collection of professionally designed, open-source landing page templates for React and Next.js. Built with Tailwind CSS.",

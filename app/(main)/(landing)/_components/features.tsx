@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const CopyIcon = ({ className }: { className?: string }) => (
@@ -28,14 +26,27 @@ const SparkleIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-type Feature =
-  | "free-forever"
-  | "copy-paste"
-  | "developer-first"
-  | "always-growing";
+type Feature = "free-forever" | "copy-paste" | "developer-first" | "always-growing";
+
+const TABS: { id: Feature; label: string; icon: React.ReactNode }[] = [
+  {
+    id: "free-forever",
+    label: "Free Forever",
+    icon: (
+      <span className="flex size-4 items-center -space-x-2">
+        <span className="size-3 shrink-0 rounded-full border border-current" />
+        <span className="size-3 shrink-0 rounded-full border border-current" />
+      </span>
+    ),
+  },
+  { id: "copy-paste", label: "Copy & Paste Ready", icon: <CopyIcon className="size-4" /> },
+  { id: "developer-first", label: "Developer-first", icon: <CodeIcon className="size-4" /> },
+  { id: "always-growing", label: "Always Growing", icon: <SparkleIcon className="size-4" /> },
+];
 
 export default function Features() {
   const [feature, setFeature] = useState<Feature>("free-forever");
+
   return (
     <section id="features" className="bg-background @container py-24">
       <div className="@2xl:grid-cols-2 mx-auto grid max-w-3xl gap-6 px-6">
@@ -48,36 +59,8 @@ export default function Features() {
             project and customize.
           </p>
 
-          <div className=" *:w-full">
-            {(
-              [
-                {
-                  id: "free-forever",
-                  label: "Free Forever",
-                  icon: (
-                    <span className="flex size-4 items-center -space-x-2">
-                      <span className="size-3 shrink-0 rounded-full border border-current" />
-                      <span className="size-3 shrink-0 rounded-full border border-current" />
-                    </span>
-                  ),
-                },
-                {
-                  id: "copy-paste",
-                  label: "Copy & Paste Ready",
-                  icon: <CopyIcon className="size-4" />,
-                },
-                {
-                  id: "developer-first",
-                  label: "Developer-first",
-                  icon: <CodeIcon className="size-4" />,
-                },
-                {
-                  id: "always-growing",
-                  label: "Always Growing",
-                  icon: <SparkleIcon className="size-4" />,
-                },
-              ] as { id: Feature; label: string; icon: React.ReactNode }[]
-            ).map((it) => (
+          <div className="*:w-full">
+            {TABS.map((it) => (
               <button
                 key={it.id}
                 onClick={() => setFeature(it.id)}
@@ -100,10 +83,8 @@ export default function Features() {
             aria-hidden
             className={cn(
               "*:bg-linear-to-r not-dark:opacity-50 mask-y-from-65% *:to-muted dark:*:to-foreground/2 absolute inset-0 grid grid-cols-4 duration-300",
-              feature === "free-forever" &&
-                "*:bg-linear-to-t grid-cols-1 grid-rows-12",
-              feature === "developer-first" &&
-                "*:bg-linear-to-l grid-cols-2 dark:opacity-50",
+              feature === "free-forever" && "*:bg-linear-to-t grid-cols-1 grid-rows-12",
+              feature === "developer-first" && "*:bg-linear-to-l grid-cols-2 dark:opacity-50",
               feature === "copy-paste" && "*:opacity-35",
             )}
           >
@@ -163,10 +144,8 @@ function CopyPasteIllo() {
       <div
         className="border-primary absolute -inset-x-16 top-6 aspect-square rounded-full border"
         style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
+          maskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 30%, black 70%, transparent)",
         }}
       />
       <div className="absolute -inset-x-8 top-24 aspect-square rounded-full border" />
@@ -206,7 +185,6 @@ function GrowingIllo() {
       aria-hidden
       className="relative flex size-44 items-center justify-center mx-auto"
     >
-      {/* Background star burst */}
       <svg viewBox="0 0 200 200" className="absolute size-full opacity-10" fill="none">
         {Array.from({ length: 12 }).map((_, i) => {
           const angle = (i * 30 * Math.PI) / 180;
@@ -221,7 +199,6 @@ function GrowingIllo() {
           );
         })}
       </svg>
-      {/* Foreground colorful star */}
       <svg viewBox="0 0 24 24" className="size-28 drop-shadow-xl" fill="none">
         <path fill="#F59E0B" fillOpacity="0.9" d="M12 2 13.8 9.2 21 12l-7.2 2.8L12 22l-1.8-7.2L3 12l7.2-2.8Z" />
         <path fill="#FCD34D" fillOpacity="0.6" d="M12 5 13.2 9.8 18 12l-4.8 1.8L12 19l-1.2-5.2L6 12l4.8-1.8Z" />

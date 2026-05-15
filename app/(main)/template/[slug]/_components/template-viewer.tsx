@@ -161,7 +161,10 @@ export function TemplateViewer({
     return ids;
   }, [fileTreeElements]);
 
-  const activeFile = files.find((f) => f.target === activeFileId) || files[0];
+  const activeFile = useMemo(
+    () => files.find((f) => f.target === activeFileId) ?? files[0],
+    [files, activeFileId],
+  );
 
   return (
     <div className="flex flex-col gap-3 mb-10 w-full">

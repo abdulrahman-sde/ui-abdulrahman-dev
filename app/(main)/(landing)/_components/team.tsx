@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import avatar from "@/public/avatar.png";
+import avatar from "@/public/avatar.webp";
 
 export default function Team() {
   return (

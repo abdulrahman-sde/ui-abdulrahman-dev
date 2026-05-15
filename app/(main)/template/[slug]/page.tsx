@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { unstable_cache } from "next/cache";
 import { TEMPLATES } from "@/constants/templates";
 import { TemplateViewer } from "./_components/template-viewer";
 import { buildRegistryItem } from "@/lib/registry/build-registry-item";
@@ -7,6 +8,26 @@ import { highlight } from "@/lib/registry/highlight";
 import { JsonLd } from "@/components/shared/json-ld";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+
+const getTemplateFiles = unstable_cache(
+  async (slug: string) => {
+    const registryItem = await buildRegistryItem(slug);
+    return Promise.all(
+      (registryItem.files || []).map(async (file) => {
+        const ext = file.path.split(".").pop() || "tsx";
+        const html = await highlight(file.content as string, ext);
+        return {
+          path: file.path,
+          target: file.target || file.path,
+          content: file.content as string,
+          html,
+        };
+      }),
+    );
+  },
+  ["template-files"],
+  { revalidate: 3600 },
+);
 
 const REGISTRY_BASE = "https://www.kairoui.online";
 
@@ -88,19 +109,7 @@ export default async function TemplateDetailPage({
   const t = TEMPLATES.find((x) => x.slug === slug);
   if (!t) notFound();
 
-  const registryItem = await buildRegistryItem(slug);
-  const filesWithHighlight = await Promise.all(
-    (registryItem.files || []).map(async (file) => {
-      const ext = file.path.split(".").pop() || "tsx";
-      const html = await highlight(file.content as string, ext);
-      return {
-        path: file.path,
-        target: file.target || file.path,
-        content: file.content as string,
-        html,
-      };
-    }),
-  );
+  const filesWithHighlight = await getTemplateFiles(slug);
 
   const schema = {
     "@context": "https://schema.org",

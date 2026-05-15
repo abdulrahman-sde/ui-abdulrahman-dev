@@ -1,9 +1,9 @@
 import type { Template } from "@/types/template";
-import nexoraThumbnail from "@/public/thumbnails/nexora.png";
-import novaThumbnail from "@/public/thumbnails/nova.png";
-import popcornThumbnail from "@/public/thumbnails/popcorn.png";
-import glazeThumbnail from "@/public/thumbnails/glaze.png";
-import orbitThumbnail from "@/public/thumbnails/orbit.png";
+import nexoraThumbnail from "@/public/thumbnails/nexora.webp";
+import novaThumbnail from "@/public/thumbnails/nova.webp";
+import popcornThumbnail from "@/public/thumbnails/popcorn.webp";
+import glazeThumbnail from "@/public/thumbnails/glaze.webp";
+import orbitThumbnail from "@/public/thumbnails/orbit.webp";
 export const TEMPLATES: Template[] = [
   {
     slug: "nova",

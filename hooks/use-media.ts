@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 export function useMedia(query: string): boolean {
-    const [matches, setMatches] = useState(true)
+    const [matches, setMatches] = useState(false)
 
     useEffect(() => {
         const matchMedia = window.matchMedia(query)

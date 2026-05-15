@@ -1,7 +1,10 @@
-"use client";
-
-import { useState } from "react";
 import { JsonLd } from "@/components/shared/json-ld";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FAQS = [
   {
@@ -40,8 +43,6 @@ const faqSchema = {
 };
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(null);
-
   return (
     <section className="py-24">
       <JsonLd data={faqSchema} />
@@ -49,27 +50,18 @@ export default function Faq() {
         <h2 className="font-serif text-4xl font-medium text-center mb-12">
           Frequently asked questions
         </h2>
-        <div className="divide-y divide-border">
+        <Accordion className="divide-y divide-border">
           {FAQS.map((faq, i) => (
-            <div key={i} className="py-5">
-              <button
-                className="flex w-full items-start justify-between text-left gap-4"
-                onClick={() => setOpen(open === i ? null : i)}
-                aria-expanded={open === i}
-              >
-                <span className="font-medium">{faq.question}</span>
-                <span className="mt-0.5 shrink-0 text-muted-foreground text-lg leading-none">
-                  {open === i ? "−" : "+"}
-                </span>
-              </button>
-              {open === i && (
-                <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
-                  {faq.answer}
-                </p>
-              )}
-            </div>
+            <AccordionItem key={i} value={String(i)}>
+              <AccordionTrigger className="py-5 text-base font-medium hover:no-underline">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 const instrumentSans = Instrument_Sans({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL("https://ui.abdulrahmanasif.dev"),
   title: "Efferd - Modern Landing Page",
   description: "A beautiful, modern landing page template.",
 };

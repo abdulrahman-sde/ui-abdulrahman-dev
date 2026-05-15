@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ui.abdulrahmanasif.dev"),
   title: "Nexora — AI-Powered Image Generation",
   description:
     "Create stunning visuals with AI-powered precision. From concept to creation in seconds.",

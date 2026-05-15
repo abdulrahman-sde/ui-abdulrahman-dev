@@ -4,10 +4,42 @@ import { TEMPLATES } from "@/constants/templates";
 import { TemplateViewer } from "./_components/template-viewer";
 import { buildRegistryItem } from "@/lib/registry/build-registry-item";
 import { highlight } from "@/lib/registry/highlight";
+import { JsonLd } from "@/components/shared/json-ld";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 const REGISTRY_BASE = "https://www.kairoui.online";
+
+const TEMPLATE_META: Record<
+  string,
+  { keyword: string; category: string; sections: string }
+> = {
+  nova: {
+    keyword: "SaaS landing page template",
+    category: "SaaS",
+    sections: "hero, features, content, pricing, and FAQ sections",
+  },
+  glaze: {
+    keyword: "dark glassmorphism landing page template",
+    category: "Dashboard",
+    sections: "hero, features, and dark glassmorphism UI sections",
+  },
+  popcorn: {
+    keyword: "mobile app landing page template",
+    category: "Mobile App",
+    sections: "hero, coverage map, features, and testimonials",
+  },
+  orbit: {
+    keyword: "SaaS template with global reach visualization",
+    category: "SaaS",
+    sections: "hero, global reach visualization, and feature sections",
+  },
+  nexora: {
+    keyword: "AI product landing page template",
+    category: "AI Tool",
+    sections: "hero, core features, how it works, pricing, and footer",
+  },
+};
 
 export async function generateStaticParams() {
   return TEMPLATES.map((t) => ({ slug: t.slug }));
@@ -20,10 +52,30 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const t = TEMPLATES.find((x) => x.slug === slug);
-  if (!t) return { title: "Template" };
+  if (!t) return { title: "Template Not Found" };
+
+  const meta = TEMPLATE_META[slug];
+  const keyword = meta?.keyword ?? `${t.title} landing page template`;
+  const sections = meta?.sections ?? t.description;
+
   return {
-    title: `${t.title} — kairoui.online`,
-    description: t.description,
+    title: `${t.title} — Free ${keyword} for Next.js`,
+    description: `${t.title} is a free, MIT-licensed ${keyword} built with Next.js 16 and Tailwind CSS v4. Includes ${sections}. Install in one command with the shadcn CLI.`,
+    alternates: {
+      canonical: `https://www.kairoui.online/template/${slug}`,
+    },
+    openGraph: {
+      title: `${t.title} — Free ${keyword}`,
+      description: `Free MIT-licensed template. Includes ${sections}. One-command install via shadcn CLI.`,
+      url: `https://www.kairoui.online/template/${slug}`,
+      siteName: "Kairo UI",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${t.title} — Free ${keyword}`,
+      description: `Free Next.js template. Install with shadcn CLI.`,
+    },
   };
 }
 
@@ -50,8 +102,27 @@ export default async function TemplateDetailPage({
     }),
   );
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    name: `${t.title} — Next.js Landing Page Template`,
+    description: t.description,
+    url: `https://www.kairoui.online/template/${slug}`,
+    codeRepository: "https://github.com/abdulrahmanasif/kairoui",
+    programmingLanguage: ["TypeScript", "TSX"],
+    runtimePlatform: "Next.js",
+    license: "https://opensource.org/licenses/MIT",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+
   return (
     <div className="relative isolate min-h-screen">
+      <JsonLd data={schema} />
+
       {/* Background Glow */}
       <div className="absolute inset-0 -z-10 overflow-hidden dark:hidden">
         <div

@@ -22,31 +22,25 @@ const fontMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.kairoui.online"),
-  title: "Kairo UI — Modern, Next.js Landing Page Templates",
+  title: {
+    default: "Free Next.js Landing Page Templates — Kairo UI",
+    template: "%s | Kairo UI",
+  },
   description:
-    "Explore a curated collection of professionally designed, open-source landing page templates for React and Next.js. Built with Tailwind CSS.",
-  keywords: [
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "Landing Page Templates",
-    "UI Components",
-    "Free Templates",
-    "Kairo UI",
-  ],
+    "A growing collection of free, MIT-licensed landing page templates for Next.js 16 and Tailwind CSS v4. Install any template in seconds with the shadcn CLI. No signup, no paywalls.",
   authors: [{ name: "Abdul Rahman Asif" }],
   creator: "Abdul Rahman Asif",
   openGraph: {
-    title: "Kairo UI — Modern, Next.js Landing Page Templates",
+    title: "Free Next.js Landing Page Templates — Kairo UI",
     description:
-      "Explore a curated collection of professionally designed, Next.js landing page templates. Built with Tailwind CSS.",
+      "Free, MIT-licensed Next.js 16 templates. Install any template with one command.",
     url: "https://www.kairoui.online",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Kairo UI — Modern, Next.js Landing Page Templates",
+        alt: "Kairo UI — Free Next.js Landing Page Templates",
       },
     ],
     siteName: "Kairo UI",
@@ -55,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kairo UI — Modern, Next.js Landing Page Templates",
+    title: "Free Next.js Landing Page Templates — Kairo UI",
     description:
-      "Explore a curated collection of professionally designed, Next.js landing page templates for React and Next.js. Built with Tailwind CSS.",
+      "Free, MIT-licensed Next.js 16 templates. Install any template with one command.",
     images: ["/twitter-image"],
     creator: "@abdurahmanasif",
   },
@@ -65,6 +59,9 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
     apple: "/logo.png",
+  },
+  alternates: {
+    canonical: "https://www.kairoui.online",
   },
 };
 

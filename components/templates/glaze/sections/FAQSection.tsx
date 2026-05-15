@@ -1,11 +1,14 @@
 "use client";
 
+import { motion } from "motion/react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { fadeUp, staggerContainer, viewportOnce } from "./_motion";
+import { WordStagger } from "./WordStagger";
 
 const faqs = [
   {
@@ -35,20 +38,30 @@ export default function FAQSection() {
     <section className="mx-auto w-full max-w-5xl px-6 py-24 md:py-32">
       <div className="mx-auto max-w-3xl">
         <h2 className="mb-10 text-xl font-medium tracking-tight text-foreground">
-          FAQ
+          <WordStagger text="FAQ" stagger={0.08} />
         </h2>
-        <Accordion defaultValue={[]} className="w-full border-t border-border">
-        {faqs.map((faq, i) => (
-          <AccordionItem key={i} value={`item-${i}`} className="border-b border-border">
-            <AccordionTrigger className="py-6 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:no-underline">
-              {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="pb-6 text-sm leading-relaxed text-muted-foreground">
-              {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+
+        <motion.div
+          variants={staggerContainer(0.06)}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+        >
+          <Accordion defaultValue={[]} className="w-full border-t border-border">
+            {faqs.map((faq, i) => (
+              <motion.div key={i} variants={fadeUp}>
+                <AccordionItem value={`item-${i}`} className="border-b border-border">
+                  <AccordionTrigger className="py-6 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 text-sm leading-relaxed text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
+            ))}
+          </Accordion>
+        </motion.div>
       </div>
     </section>
   );

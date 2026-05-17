@@ -74,14 +74,14 @@ const METAS: Record<string, TemplateMeta> = {
     title: "Aurora",
     description:
       "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
-    dependencies: ["lucide-react,motion"],
+    dependencies: ["lucide-react", "motion"],
   },
   xero: {
     name: "xero",
     title: "Xero",
     description:
       "A dark SaaS landing page for a data encryption platform with animated beam hero, features grid, code showcase, metrics, testimonials, pricing, FAQ, CTA, and footer.",
-    dependencies: ["lucide-react,motion"],
+    dependencies: ["lucide-react", "motion"],
   },
 };
 

@@ -20,3 +20,13 @@
   --color-nexora-orange: var(--nexora-orange);
   --color-nexora-pink: var(--nexora-pink);
 }
+
+/* ===== Hero mesh grid ===== */
+.nexora-hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}

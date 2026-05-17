@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 
-export type TemplateColor = "mint" | "amber" | "zinc" | "slate" | "pink";
+export type TemplateColor = "mint" | "amber" | "zinc" | "slate" | "pink" | "green" | "indigo" | "purple";
 export type TemplateVariant = "northwind" | "halcyon" | "atelier";
 
 export interface Template {

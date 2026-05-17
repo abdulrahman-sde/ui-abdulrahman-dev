@@ -4,10 +4,7 @@ export function Gemini(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             height="1em"
-            style={{
-                flex: 'none',
-                lineHeight: 1,
-            }}
+            className="flex-none leading-none"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             width="1em"

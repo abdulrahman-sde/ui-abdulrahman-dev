@@ -4,7 +4,21 @@ import novaThumbnail from "@/public/thumbnails/nova.webp";
 import popcornThumbnail from "@/public/thumbnails/popcorn.webp";
 import glazeThumbnail from "@/public/thumbnails/glaze.webp";
 import orbitThumbnail from "@/public/thumbnails/orbit.webp";
+import xeroThumbnail from "@/public/thumbnails/xero.png";
+import auroraThumbnail from "@/public/thumbnails/aurora.png";
+import luminaThumbnail from "@/public/thumbnails/lumina.png";
+import nextoThumbnail from "@/public/thumbnails/nexto.png";
+
 export const TEMPLATES: Template[] = [
+  {
+    slug: "nexto",
+    title: "Nexto",
+    description:
+      "A studio agency landing page with hero, logos strip, services grid, showcase, stats, process steps, testimonial, CTA, and footer.",
+    color: "purple",
+    accent: "hsl(248 82% 69%)",
+    thumbnail: nextoThumbnail,
+  },
   {
     slug: "nova",
     title: "Nova",
@@ -33,6 +47,33 @@ export const TEMPLATES: Template[] = [
     thumbnail: orbitThumbnail,
   },
   {
+    slug: "xero",
+    title: "Xero",
+    description:
+      "A dark SaaS landing page for a data encryption platform with animated beam hero, features, showcase, pricing, FAQ, and testimonials.",
+    color: "purple",
+    accent: "hsl(290 40% 72%)",
+    thumbnail: xeroThumbnail,
+  },
+  {
+    slug: "aurora",
+    title: "Aurora",
+    description:
+      "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
+    color: "zinc",
+    accent: "hsl(0 0% 100%)",
+    thumbnail: auroraThumbnail,
+  },
+  {
+    slug: "lumina",
+    title: "Lumina",
+    description:
+      "A white + indigo SaaS automation landing page with frosted-glass dashboard preview, logo marquee, features grid, agent feed, stats, testimonials, pricing, FAQ, and footer.",
+    color: "indigo",
+    accent: "hsl(239 84% 67%)",
+    thumbnail: luminaThumbnail,
+  },
+  {
     slug: "glaze",
     title: "Glaze",
     description:
@@ -51,6 +92,9 @@ export const TEMPLATES: Template[] = [
     accent: "hsl(142.1 70.6% 45.3%)",
     thumbnail: nexoraThumbnail,
   },
+  
+  
+  
 ];
 
 export const TEMPLATE_CATEGORIES = [

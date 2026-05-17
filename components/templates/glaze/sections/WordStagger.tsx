@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 import { wordVariant, wordContainer, viewportOnce } from "./_motion";
 
 interface WordStaggerProps {
@@ -30,14 +28,13 @@ export function WordStagger({
       variants={wordContainer(stagger, delay)}
       initial="hidden"
       {...containerProps}
-      className={className}
-      style={{ display: "inline" }}
+      className={`inline ${className ?? ""}`}
     >
       {words.map((word, i) => (
         <motion.span
           key={i}
           variants={wordVariant}
-          style={{ display: "inline-block", whiteSpace: "pre" }}
+          className="inline-block whitespace-pre"
         >
           {word}{i < words.length - 1 ? " " : ""}
         </motion.span>

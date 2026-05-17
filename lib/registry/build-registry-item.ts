@@ -53,6 +53,34 @@ const METAS: Record<string, TemplateMeta> = {
     dependencies: ["lucide-react"],
     registryDependencies: ["accordion", "button"],
   },
+  nexto: {
+    name: "nexto",
+    title: "Nexto",
+    description:
+      "A studio agency landing page with hero, logos strip, services grid, showcase, stats, process steps, testimonial, CTA, and footer.",
+    dependencies: [],
+  },
+  lumina: {
+    name: "lumina",
+    title: "Lumina",
+    description:
+      "A white + indigo SaaS automation landing page with frosted-glass dashboard preview, logo marquee, features grid, agent activity feed, stats, testimonials, pricing, FAQ, CTA, and footer.",
+    dependencies: ["lucide-react"],
+  },
+  aurora: {
+    name: "aurora",
+    title: "Aurora",
+    description:
+      "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
+    dependencies: ["lucide-react"],
+  },
+  xero: {
+    name: "xero",
+    title: "Xero",
+    description:
+      "A dark SaaS landing page for a data encryption platform with animated beam hero, features grid, code showcase, metrics, testimonials, pricing, FAQ, CTA, and footer.",
+    dependencies: [],
+  },
 };
 
 function walkDir(dir: string, base: string): string[] {

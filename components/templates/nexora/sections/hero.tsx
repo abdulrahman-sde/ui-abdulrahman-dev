@@ -35,18 +35,7 @@ export default function Hero() {
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,#F5C344_0%,#F28482_25%,#B567C2_50%,transparent_75%)] opacity-30" />
             {/* Mesh grid */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-                backgroundSize: "24px 24px",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse at center, black 0%, transparent 70%)",
-                maskImage:
-                  "radial-gradient(ellipse at center, black 0%, transparent 70%)",
-              }}
-            />
+            <div className="nexora-hero-grid absolute inset-0" />
             {/* Status label */}
             <div className="absolute bottom-7 left-7 flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-[0.8rem] font-medium text-[#1e293b] shadow-[0_8px_20px_rgba(0,0,0,0.06)]">
               <span className="h-2 w-2 rounded-full bg-[#22c55e]" />

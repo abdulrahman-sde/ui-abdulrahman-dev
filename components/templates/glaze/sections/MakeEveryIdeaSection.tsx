@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { fadeUp, fadeIn, staggerContainer, viewportOnce } from "./_motion";

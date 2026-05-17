@@ -45,9 +45,8 @@ export function CobeGlobe({ className }: { className?: string }) {
 
 	return (
 		<canvas
-			className={className}
+			className={`w-[600px] h-[600px] max-w-full aspect-square ${className ?? ""}`}
 			ref={canvasRef}
-			style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
 		/>
 	);
 }

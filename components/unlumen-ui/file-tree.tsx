@@ -199,7 +199,11 @@ function FolderContent({ children }: { children: React.ReactNode }) {
       {isOpen && (
         <motion.div
           initial={{ height: 0, opacity: 0, overflow: "hidden" }}
-          animate={{ height: "auto", opacity: 1, transitionEnd: { overflow: "visible" } }}
+          animate={{
+            height: "auto",
+            opacity: 1,
+            transitionEnd: { overflow: "visible" },
+          }}
           exit={{ height: 0, opacity: 0, overflow: "hidden" }}
           transition={{ type: "spring", stiffness: 500, damping: 40 }}
         >
@@ -350,12 +354,7 @@ export function FileTree({
         setHighlightBounds,
       }}
     >
-      <div
-        className={cn(
-          "rounded-xl border border-border/60",
-          className,
-        )}
-      >
+      <div className={cn("rounded-xl border border-border/60", className)}>
         <div
           ref={containerRef}
           className="p-2 w-full relative isolate"

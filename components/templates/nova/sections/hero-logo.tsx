@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 import { SupabaseFull } from "../svgs/supabase";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as motion from "motion/react-client";
 import { VercelFull } from "../svgs/vercel";
 import { Bolt } from "../svgs/bolt";
 import { Beacon } from "../svgs/beacon";

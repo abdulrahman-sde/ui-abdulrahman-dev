@@ -54,6 +54,7 @@ export default function TemplatesShowcase() {
                         src={t.thumbnail}
                         alt={t.title}
                         fill
+                        loading="lazy"
                         className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.05]"
                         sizes="(max-width: 640px) 100vw, 480px"
                       />

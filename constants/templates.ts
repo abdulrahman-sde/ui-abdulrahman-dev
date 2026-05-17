@@ -56,15 +56,6 @@ export const TEMPLATES: Template[] = [
     thumbnail: xeroThumbnail,
   },
   {
-    slug: "aurora",
-    title: "Aurora",
-    description:
-      "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
-    color: "zinc",
-    accent: "hsl(0 0% 100%)",
-    thumbnail: auroraThumbnail,
-  },
-  {
     slug: "lumina",
     title: "Lumina",
     description:
@@ -72,6 +63,15 @@ export const TEMPLATES: Template[] = [
     color: "indigo",
     accent: "hsl(239 84% 67%)",
     thumbnail: luminaThumbnail,
+  },
+  {
+    slug: "aurora",
+    title: "Aurora",
+    description:
+      "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
+    color: "zinc",
+    accent: "hsl(0 0% 100%)",
+    thumbnail: auroraThumbnail,
   },
   {
     slug: "glaze",
@@ -92,9 +92,6 @@ export const TEMPLATES: Template[] = [
     accent: "hsl(142.1 70.6% 45.3%)",
     thumbnail: nexoraThumbnail,
   },
-  
-  
-  
 ];
 
 export const TEMPLATE_CATEGORIES = [

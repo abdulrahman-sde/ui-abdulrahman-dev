@@ -14,7 +14,8 @@ const METAS: Record<string, TemplateMeta> = {
   orbit: {
     name: "orbit",
     title: "Orbit",
-    description: "A modern SaaS landing page template with global reach visualization.",
+    description:
+      "A modern SaaS landing page template with global reach visualization.",
     dependencies: ["lucide-react", "motion", "cobe"],
     registryDependencies: ["accordion", "button", "card"],
   },
@@ -49,7 +50,8 @@ const METAS: Record<string, TemplateMeta> = {
   popcorn: {
     name: "popcorn",
     title: "Popcorn",
-    description: "A clean, modern landing page for global services with coverage map, features, and testimonials.",
+    description:
+      "A clean, modern landing page for global services with coverage map, features, and testimonials.",
     dependencies: ["lucide-react"],
     registryDependencies: ["accordion", "button"],
   },
@@ -72,14 +74,14 @@ const METAS: Record<string, TemplateMeta> = {
     title: "Aurora",
     description:
       "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react,motion"],
   },
   xero: {
     name: "xero",
     title: "Xero",
     description:
       "A dark SaaS landing page for a data encryption platform with animated beam hero, features grid, code showcase, metrics, testimonials, pricing, FAQ, CTA, and footer.",
-    dependencies: [],
+    dependencies: ["lucide-react,motion"],
   },
 };
 
@@ -140,7 +142,10 @@ export async function buildRegistryItem(slug: string): Promise<RegistryItem> {
     let content = fs.readFileSync(path.join(routeDir, rel), "utf-8");
     if (basename === "layout.tsx") {
       content = content.replace(
-        new RegExp(`(["'])@/components/templates/${slug}/globals\\.css\\1`, "g"),
+        new RegExp(
+          `(["'])@/components/templates/${slug}/globals\\.css\\1`,
+          "g",
+        ),
         `"./globals.css"`,
       );
     }

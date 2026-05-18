@@ -56,9 +56,29 @@ const TEMPLATE_META: Record<
     sections: "hero, global reach visualization, and feature sections",
   },
   nexora: {
-    keyword: "AI product landing page template",
+    keyword: "AI image generation landing page template",
     category: "AI Tool",
     sections: "hero, core features, how it works, pricing, and footer",
+  },
+  nexto: {
+    keyword: "agency landing page template",
+    category: "Agency",
+    sections: "hero, logo strip, services grid, showcase, stats, process steps, testimonials, CTA, and footer",
+  },
+  xero: {
+    keyword: "dark SaaS landing page template",
+    category: "SaaS",
+    sections: "animated beam hero, features, showcase, pricing, FAQ, and testimonials",
+  },
+  lumina: {
+    keyword: "SaaS automation landing page template",
+    category: "SaaS",
+    sections: "frosted-glass dashboard preview, logo marquee, features grid, agent feed, stats, testimonials, pricing, and FAQ",
+  },
+  aurora: {
+    keyword: "dark-mode SaaS landing page template",
+    category: "SaaS",
+    sections: "video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing",
   },
 };
 
@@ -91,11 +111,20 @@ export async function generateMetadata({
       url: `https://www.kairoui.online/template/${slug}`,
       siteName: "Kairo UI",
       type: "website",
+      images: [
+        {
+          url: `https://www.kairoui.online/thumbnails/${slug}.png`,
+          width: 1200,
+          height: 630,
+          alt: `${t.title} — Free ${keyword} preview`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${t.title} — Free ${keyword}`,
       description: `Free Next.js template. Install with shadcn CLI.`,
+      images: [`https://www.kairoui.online/thumbnails/${slug}.png`],
     },
   };
 }
@@ -167,6 +196,44 @@ export default async function TemplateDetailPage({
           src={`/templates/${t.slug}`}
           name={t.title}
         />
+
+        {/* Server-rendered content for SEO */}
+        {(() => {
+          const meta = TEMPLATE_META[slug];
+          const keyword = meta?.keyword ?? `${t.title} landing page template`;
+          const sections = meta?.sections ?? t.description;
+          return (
+            <div className="mt-16 max-w-2xl border-t border-border/50 pt-12 space-y-6">
+              <h2 className="font-serif text-2xl font-medium tracking-tight">
+                About {t.title}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                {t.title} is a free, open-source {keyword} built with Next.js
+                and Tailwind CSS v4. It includes {sections}. Released under the
+                MIT license — use it in personal or commercial projects with no
+                restrictions.
+              </p>
+              <dl className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <dt className="font-medium text-foreground">License</dt>
+                  <dd className="text-muted-foreground">MIT — free forever</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">Framework</dt>
+                  <dd className="text-muted-foreground">Next.js 16 + React 19</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">Styling</dt>
+                  <dd className="text-muted-foreground">Tailwind CSS v4</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">Install</dt>
+                  <dd className="text-muted-foreground">One command via shadcn CLI</dd>
+                </div>
+              </dl>
+            </div>
+          );
+        })()}
       </div>
     </div>
   );

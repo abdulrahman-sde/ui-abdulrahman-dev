@@ -3,7 +3,7 @@ import { TEMPLATES } from "@/constants/templates";
 
 const BASE = "https://www.kairoui.online";
 
-const SITE_UPDATED = new Date("2025-05-15");
+const SITE_UPDATED = new Date("2026-05-18");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

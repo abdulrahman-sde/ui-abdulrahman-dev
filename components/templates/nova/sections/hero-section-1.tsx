@@ -4,12 +4,12 @@ import { Card } from "@/components/ui/card";
 import { HeroHeader } from "./header";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { Supabase } from "@/components/ui/svgs/supabase";
-import { Slack } from "@/components/ui/svgs/slack";
-import { Linear } from "@/components/ui/svgs/linear";
-import { Vercel } from "@/components/ui/svgs/vercel";
-import { Firebase } from "@/components/ui/svgs/firebase";
-import { ClerkIconLight as Clerk } from "@/components/ui/svgs/clerk";
+import { Supabase } from "../svgs/supabase";
+import { Slack } from "../svgs/slack";
+import { Linear } from "../svgs/linear";
+import { Vercel } from "../svgs/vercel";
+import { Firebase } from "../svgs/firebase";
+import { ClerkIconLight as Clerk } from "../svgs/clerk";
 import { Figma } from "../svgs/figma";
 import { Twilio } from "../svgs/twilio";
 

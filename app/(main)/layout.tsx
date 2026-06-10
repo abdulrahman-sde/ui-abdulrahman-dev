@@ -72,6 +72,12 @@ export default function MainLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+        ></script>
+      </head>
       <body
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >

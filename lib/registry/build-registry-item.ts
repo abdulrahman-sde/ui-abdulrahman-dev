@@ -76,6 +76,13 @@ const METAS: Record<string, TemplateMeta> = {
       "A premium dark-mode SaaS landing page with video hero, marquee logo cloud, feature grid, how-it-works steps, studio showcase, testimonials, and pricing.",
     dependencies: ["lucide-react", "motion"],
   },
+  sprint: {
+    name: "sprint",
+    title: "Sprint",
+    description:
+      "A Linear-inspired dark landing page with 3D dashboard mockup, AI agents integration showcase, project timeline visualization, workflow carousel, and feature cards. Built with Motion and Tailwind CSS v4.",
+    dependencies: ["lucide-react", "motion"],
+  },
   xero: {
     name: "xero",
     title: "Xero",

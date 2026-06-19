@@ -75,6 +75,11 @@ const TEMPLATE_META: Record<
     category: "SaaS",
     sections: "frosted-glass dashboard preview, logo marquee, features grid, agent feed, stats, testimonials, pricing, and FAQ",
   },
+  sprint: {
+    keyword: "Linear-inspired product management landing page template",
+    category: "SaaS",
+    sections: "3D dashboard mockup, hero, navbar, AI agents showcase, project timeline visualization, workflow carousel, logo cloud, feature cards, CTA, and footer",
+  },
   aurora: {
     keyword: "dark-mode SaaS landing page template",
     category: "SaaS",

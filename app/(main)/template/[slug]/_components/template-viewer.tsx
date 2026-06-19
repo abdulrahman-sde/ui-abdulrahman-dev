@@ -285,9 +285,9 @@ export function TemplateViewer({
                 src={src}
                 className="border-0 absolute inset-0"
                 style={{
-                  width: "200%",
-                  height: "200%",
-                  transform: "scale(0.5)",
+                  width: "150%",
+                  height: "150%",
+                  transform: "scale(0.67)",
                   transformOrigin: "top left",
                 }}
                 title={`${name} Preview`}

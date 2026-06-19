@@ -8,8 +8,17 @@ import xeroThumbnail from "@/public/thumbnails/xero.png";
 import auroraThumbnail from "@/public/thumbnails/aurora.png";
 import luminaThumbnail from "@/public/thumbnails/lumina.png";
 import nextoThumbnail from "@/public/thumbnails/nexto.png";
-
+import sprintThumbnail from "@/public/thumbnails/sprint.png";
 export const TEMPLATES: Template[] = [
+  {
+    slug: "sprint",
+    title: "Sprint",
+    description:
+      "A Linear-inspired dark landing page with 3D dashboard mockup, AI agents integration showcase, project timeline visualization, workflow carousel, and feature cards. Built with Motion and Tailwind CSS v4.",
+    color: "zinc",
+    accent: "hsl(0 0% 100%)",
+    thumbnail: sprintThumbnail,
+  },
   {
     slug: "nexto",
     title: "Nexto",
@@ -19,6 +28,7 @@ export const TEMPLATES: Template[] = [
     accent: "hsl(248 82% 69%)",
     thumbnail: nextoThumbnail,
   },
+
   {
     slug: "nova",
     title: "Nova",
@@ -29,15 +39,6 @@ export const TEMPLATES: Template[] = [
     thumbnail: novaThumbnail,
   },
   {
-    slug: "popcorn",
-    title: "Popcorn",
-    description:
-      "A clean, modern landing page for global services with coverage map, features, and testimonials.",
-    color: "amber",
-    accent: "hsl(45 93% 47%)",
-    thumbnail: popcornThumbnail,
-  },
-  {
     title: "Orbit",
     slug: "orbit",
     description:
@@ -46,6 +47,17 @@ export const TEMPLATES: Template[] = [
     accent: "neutral",
     thumbnail: orbitThumbnail,
   },
+
+  {
+    slug: "popcorn",
+    title: "Popcorn",
+    description:
+      "A clean, modern landing page for global services with coverage map, features, and testimonials.",
+    color: "amber",
+    accent: "hsl(45 93% 47%)",
+    thumbnail: popcornThumbnail,
+  },
+
   {
     slug: "xero",
     title: "Xero",

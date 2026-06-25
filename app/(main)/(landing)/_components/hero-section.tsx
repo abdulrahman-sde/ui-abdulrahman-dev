@@ -9,17 +9,7 @@ export default function HeroSection() {
     <main className="overflow-hidden">
       <section className="bg-background relative">
         <div className="relative py-24 sm:py-26">
-          <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 hidden aspect-square sm:block lg:top-24 dark:opacity-30 dark:invert">
-            <Image
-              src="https://images.unsplash.com/photo-1740516367177-ae20098c8786?q=80&w=2268&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="hero background"
-              width={2268}
-              height={1740}
-              priority
-              sizes="(max-width: 1280px) 100vw, 2268px"
-              className="size-full object-cover object-top"
-            />
-          </div>
+          <div className="mask-radial-from-45% mask-radial-to-75% mask-radial-at-top mask-radial-[75%_100%] mask-t-from-50% lg:aspect-9/4 absolute inset-0 hidden aspect-square sm:block lg:top-24 dark:opacity-30 dark:invert"></div>
           <div className="relative z-10 mx-auto w-full max-w-5xl px-6">
             <div
               aria-hidden

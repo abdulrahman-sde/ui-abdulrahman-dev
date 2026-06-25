@@ -10,7 +10,7 @@ import { Footer } from "@/components/templates/triggerly/sections/footer"
 
 export default function TriggerlyPage() {
   return (
-    <div className="w-full overflow-x-hidden" style={{ backgroundColor: "#09090B" }}>
+    <div className="w-full overflow-x-hidden bg-background">
       <Navbar />
       <Hero />
       <LogoCloud />

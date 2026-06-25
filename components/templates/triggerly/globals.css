@@ -1,8 +1,168 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+:root {
+  --background: #09090b;
+  --foreground: #ffffff;
+  --card: #18181b;
+  --card-foreground: #d4d4d8;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: #27272a;
+  --ring: #a1a1aa;
+  --primary: #ffffff;
+  --primary-foreground: #09090b;
+  --secondary: #27272a;
+  --secondary-foreground: #ffffff;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-success: #10b981;
+  --radius: 10px;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
 @layer base {
-  html {
-    overflow-x: hidden;
+  * {
+    border-color: var(--border);
   }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+.gradient-overlay-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent 100%);
+  pointer-events: none;
+}
+
+.fade-to-bg {
+  background: linear-gradient(to top, var(--background) 20%, transparent 100%);
+}
+
+.card-fade {
+  background: linear-gradient(to top, color-mix(in srgb, var(--background) 90%, transparent), transparent);
+}
+
+.hero-glow {
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  width: 1200px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  transform: translate(-50%, -30%);
+}
+
+.feature-card {
+  aspect-ratio: 336 / 360;
+  border-radius: 30px;
+  height: 360px;
+  isolation: isolate;
+}
+
+.card-mask {
+  mask-image: linear-gradient(#000 70%, transparent 90%);
+  -webkit-mask-image: linear-gradient(#000 70%, transparent 90%);
+}
+
+.card-content {
+  padding: 0 24px 40px;
+  gap: 16px;
+}
+
+.mockup-wrapper {
+  perspective: 900px;
+  user-select: none;
+  -webkit-user-select: none;
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+}
+
+.mockup-inner {
+  transform-origin: top;
+  will-change: transform;
+  transform: translateY(0%) rotateX(30deg) scale(1.15);
+  position: relative;
+}
+
+.mockup-overlay {
+  border: 1px solid rgba(66, 66, 66, 0.5);
+  background: linear-gradient(rgba(255, 255, 255, 0.1) 40%, rgba(8, 9, 10, 0.1) 100%);
+  border-radius: 8px;
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 1.503px 5.261px rgba(255, 255, 255, 0.04), inset 0 -0.752px 0.752px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mockup-fade {
+  background: linear-gradient(180deg, transparent 0%, var(--background) 100%);
+  height: 80%;
+  position: absolute;
+  bottom: -2px;
+  left: -180px;
+  right: -180px;
+  pointer-events: none;
+  z-index: 11;
+}
+
+.hero-mockup-stage {
+  height: 700px;
+  margin-top: -60px;
+}
+
+.timeline-stage {
+  perspective: 1200px;
+}
+
+.timeline-transform {
+  transform: rotateX(50deg) rotateZ(-35deg);
+  transform-origin: center center;
+}
+
+.timeline-dash {
+  height: 600px;
+  background-image: repeating-linear-gradient(to bottom, transparent, transparent 4px, rgba(113, 113, 122, 0.5) 4px, rgba(113, 113, 122, 0.5) 8px);
+}
+
+.timeline-label {
+  background: rgb(39 39 42 / 0.8);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(212 212 216);
 }

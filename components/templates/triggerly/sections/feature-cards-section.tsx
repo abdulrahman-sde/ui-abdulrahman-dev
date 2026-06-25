@@ -140,21 +140,20 @@ function BranchingIllustration() {
 
 export function FeatureCardsSection() {
   return (
-    <div className="relative z-20 py-40" style={{ backgroundColor: "#09090B" }}>
-      <div className="absolute top-0 left-0 right-0 pointer-events-none"
-        style={{ height: "20%", background: "linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 100%)" }} />
+    <div className="relative z-20 py-40 bg-background">
+      <div className="gradient-overlay-top" />
       <div className="w-full flex justify-center px-6">
         <div className="w-full max-w-5xl">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-16">
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="text-3xl md:text-5xl font-medium tracking-tight text-white max-w-md">
+              className="text-3xl md:text-5xl font-medium tracking-tight text-foreground max-w-md">
               Everything you need to automate
             </motion.h2>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
               className="max-w-md">
-              <p className="text-zinc-400 leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed">
                 Triggerly is built around a drag-and-drop node editor, a growing library of app integrations, and the branching logic to handle any edge case.{" "}
-                <a href="#" className="text-white inline-flex items-center gap-1 hover:underline">See how it works <ChevronRight className="w-4 h-4" /></a>
+                <a href="#" className="text-foreground inline-flex items-center gap-1 hover:underline">See how it works <ChevronRight className="w-4 h-4" /></a>
               </p>
             </motion.div>
           </div>
@@ -162,15 +161,13 @@ export function FeatureCardsSection() {
             {featureCards.map((card, index) => (
               <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                className="bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer group overflow-hidden relative flex flex-col justify-end"
-                style={{ aspectRatio: "336 / 360", borderRadius: "30px", height: "360px", isolation: "isolate" }}>
-                <div className="absolute top-0 left-0 w-full flex"
-                  style={{ maskImage: "linear-gradient(#000 70%, transparent 90%)", WebkitMaskImage: "linear-gradient(#000 70%, transparent 90%)" }}>
+                className="bg-card/50 border border-border hover:border-muted transition-colors cursor-pointer group overflow-hidden relative flex flex-col justify-end feature-card">
+                <div className="absolute top-0 left-0 w-full flex card-mask">
                   {card.illustration}
                 </div>
-                <div className="relative z-10 flex items-center justify-between w-full" style={{ padding: "0 24px 40px", gap: "16px" }}>
-                  <h3 className="text-white font-medium text-lg leading-tight">{card.title}</h3>
-                  <div className="w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center text-zinc-500 group-hover:border-zinc-500 group-hover:text-zinc-300 transition-colors flex-shrink-0">
+                <div className="relative z-10 flex items-center justify-between w-full card-content">
+                  <h3 className="text-foreground font-medium text-lg leading-tight">{card.title}</h3>
+                  <div className="w-8 h-8 rounded-full border border-secondary flex items-center justify-center text-muted-foreground group-hover:border-card-foreground/40 group-hover:text-card-foreground transition-colors flex-shrink-0">
                     <Plus className="w-4 h-4" />
                   </div>
                 </div>

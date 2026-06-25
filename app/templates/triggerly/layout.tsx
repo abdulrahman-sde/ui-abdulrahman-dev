@@ -21,7 +21,7 @@ export default function TriggerlyLayout({
 }) {
   return (
       <html lang="en" suppressHydrationWarning className={`${fontSans.variable}`}>
-      <body className="antialiased bg-[#09090B] text-white font-sans">
+      <body className="antialiased bg-background text-foreground font-sans">
         {children}
       </body>
     </html>

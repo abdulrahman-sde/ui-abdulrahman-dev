@@ -21,20 +21,20 @@ const brands = [
 
 export function LogoCloud() {
   return (
-    <div className="relative z-20 pb-24 pt-8" style={{ backgroundColor: "#09090B" }}>
+    <div className="relative z-20 pb-24 pt-8 bg-background">
       <div className="w-full flex justify-center px-6">
         <div className="w-full max-w-4xl text-center">
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="text-lg text-zinc-300 mb-2">Powering automation at fast-moving teams.</motion.p>
+            className="text-lg text-card-foreground mb-2">Powering automation at fast-moving teams.</motion.p>
           <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-zinc-500 mb-16">From indie teams to scaled enterprises.</motion.p>
+            className="text-lg text-muted-foreground mb-16">From indie teams to scaled enterprises.</motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
             className="relative group cursor-pointer">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-10 items-center justify-items-center transition-all duration-300 group-hover:blur-[2.5px] group-hover:opacity-50">
               {brands.map((brand) => {
                 const Icon = brand.icon
                 return (
-                  <div key={brand.name} className="text-white font-semibold text-xl flex items-center gap-2">
+                  <div key={brand.name} className="text-foreground font-semibold text-xl flex items-center gap-2">
                     <Icon className="w-5 h-5" />
                     {brand.name}
                   </div>
@@ -42,7 +42,7 @@ export function LogoCloud() {
               })}
             </div>
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="px-5 py-2.5 bg-zinc-800/80 backdrop-blur-sm border border-zinc-700 rounded-full text-sm text-zinc-300 flex items-center gap-2">
+              <div className="px-5 py-2.5 bg-muted/80 backdrop-blur-sm border border-secondary rounded-full text-sm text-card-foreground flex items-center gap-2">
                 Meet our customers <span aria-hidden="true">›</span>
               </div>
             </div>

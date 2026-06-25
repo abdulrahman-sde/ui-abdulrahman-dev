@@ -13,6 +13,7 @@ import {
   MessageSquare,
   LayoutGrid,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Slack } from "../svgs/slack";
 import { GitHub } from "../svgs/github";
 import { Stripe } from "../svgs/stripe";
@@ -308,9 +309,9 @@ export function WorkflowsSection() {
                           {card.title}
                         </p>
                       </div>
-                      <button className="flex-shrink-0 w-8 h-8 rounded-full border border-secondary flex items-center justify-center text-muted-foreground hover:text-card-foreground hover:border-muted transition-colors">
+                      <Button variant="outline" size="icon">
                         <Plus className="w-4 h-4" />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -319,20 +320,12 @@ export function WorkflowsSection() {
           </div>
         </div>
         <div className="flex items-center justify-center gap-2 mt-8">
-          <button
-            onClick={scrollLeft}
-            disabled={scrollPosition === 0}
-            className="w-10 h-10 rounded-full border border-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
+          <Button variant="outline" size="icon" onClick={scrollLeft} disabled={scrollPosition === 0}>
             <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={scrollRight}
-            disabled={scrollPosition >= carouselCards.length - 4}
-            className="w-10 h-10 rounded-full border border-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
+          </Button>
+          <Button variant="outline" size="icon" onClick={scrollRight} disabled={scrollPosition >= carouselCards.length - 4}>
             <ChevronRight className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
       </div>
     </section>

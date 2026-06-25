@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import * as motion from "motion/react-client";
 import { EditorMockup } from "./editor-mockup";
 import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 export function Hero() {
   const [yOffset, setYOffset] = useState(0);
@@ -79,10 +80,12 @@ export function Hero() {
               <Button asChild>
                 <a href="#">Start building</a>
               </Button>
-              <button className="text-card-foreground font-medium hover:text-foreground transition-colors flex items-center gap-2 text-sm">
-                <span className="text-muted-foreground">New:</span> Triggerly AI builds your flows
-                <span aria-hidden="true">→</span>
-              </button>
+              <Button variant="ghost" size="sm" asChild>
+                <a href="#">
+                  <span className="text-muted-foreground">New:</span> Triggerly AI builds your flows
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+              </Button>
             </motion.div>
           </div>
         </div>

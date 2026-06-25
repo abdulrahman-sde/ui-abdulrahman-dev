@@ -1,5 +1,6 @@
 import * as motion from "motion/react-client"
 import { ChevronRight, Check, Zap, ArrowRight, Webhook } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { Stripe } from "../svgs/stripe"
 import { Notion } from "../svgs/notion"
 import { Slack } from "../svgs/slack"
@@ -30,10 +31,11 @@ export function AISection() {
             className="text-muted-foreground max-w-md mb-8">
             <span className="text-foreground font-medium">Triggerly AI turns a plain-English description into a ready-to-run flow.</span> Say what you want to automate and let AI wire the nodes.
           </motion.p>
-          <motion.button initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
-            className="px-5 py-2.5 bg-secondary text-card-foreground rounded-lg border border-secondary hover:bg-muted transition-colors text-sm flex items-center gap-2 mb-16">
-            Learn more <ChevronRight className="w-4 h-4" />
-          </motion.button>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}>
+            <Button variant="outline" className="mb-16" asChild>
+              <a href="#">Learn more <ChevronRight className="w-4 h-4" /></a>
+            </Button>
+          </motion.div>
           <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }}
             className="flex justify-center mb-24">
             <div className="mockup-wrapper">
@@ -98,9 +100,9 @@ export function AISection() {
                       <span className="text-card-foreground text-sm font-medium">3 nodes, 2 branches</span>
                     </div>
                     <p className="text-muted-foreground text-xs mb-4">AI suggestion confidence: 94%. Click to apply this flow to your workspace.</p>
-                    <button className="w-full flex items-center justify-center gap-2 bg-secondary/50 hover:bg-muted/50 text-card-foreground text-sm py-2.5 rounded-md transition-colors">
+                    <Button variant="secondary" className="w-full">
                       <Check className="w-4 h-4" /> Apply flow
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -119,9 +121,9 @@ export function AISection() {
                       <span className="text-muted-foreground/50">Custom nodes</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <button className="flex items-center gap-1.5 border border-secondary/60 text-muted-foreground text-sm px-3 py-1.5 rounded-full hover:bg-secondary/30 transition-colors"><Webhook className="w-3.5 h-3.5" /> Webhook</button>
-                      <button className="flex items-center gap-1.5 border border-secondary/60 text-muted-foreground text-sm px-3 py-1.5 rounded-full hover:bg-secondary/30 transition-colors"><Notion className="w-3.5 h-3.5" /> Database</button>
-                      <button className="flex items-center gap-1.5 border border-secondary/60 text-muted-foreground text-sm px-3 py-1.5 rounded-full hover:bg-secondary/30 transition-colors"><Zap className="w-3.5 h-3.5" /> HTTP</button>
+                      <Button variant="outline" size="sm" className="rounded-full"><Webhook className="w-3.5 h-3.5" /> Webhook</Button>
+                      <Button variant="outline" size="sm" className="rounded-full"><Notion className="w-3.5 h-3.5" /> Database</Button>
+                      <Button variant="outline" size="sm" className="rounded-full"><Zap className="w-3.5 h-3.5" /> HTTP</Button>
                     </div>
                   </div>
                 </div>

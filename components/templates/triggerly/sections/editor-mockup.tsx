@@ -1,5 +1,6 @@
 import type React from "react"
 import * as motion from "motion/react-client"
+import { Button } from "@/components/ui/button"
 import {
   Workflow, Activity, KeyRound, ChevronDown, ChevronRight,
   Zap, GitBranch, Filter, Play, Plus, Search,
@@ -109,9 +110,9 @@ export function EditorMockup() {
               <div><span className="text-muted-foreground">ts</span><span className="text-muted-foreground">: </span><span className="text-emerald-300">{`{{message.ts}}`}</span></div>
             </div>
           </div>
-          <button className="w-full flex items-center justify-center gap-2 border border-secondary/60 text-muted-foreground hover:text-card-foreground hover:border-muted text-xs py-2 rounded-md transition-colors">
+          <Button variant="outline" size="sm" className="w-full text-xs">
             <Plus className="w-3.5 h-3.5" /> Add condition
-          </button>
+          </Button>
         </div>
         <div className="px-4 py-3 border-t border-border/50">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">

@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 export function CTASection() {
   return (
     <section className="py-24 px-6 bg-background">
@@ -7,12 +9,8 @@ export function CTASection() {
             Automate the busywork. Ship the work that matters.
           </h2>
           <div className="flex items-center gap-3">
-            <button className="px-5 py-2.5 border border-secondary text-foreground font-medium rounded-lg hover:bg-muted transition-colors text-sm">
-              Contact sales
-            </button>
-            <button className="px-5 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:brightness-90 transition-all text-sm">
-              Get started
-            </button>
+            <Button variant="outline">Contact sales</Button>
+            <Button>Get started</Button>
           </div>
         </div>
       </div>

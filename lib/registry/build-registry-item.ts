@@ -82,6 +82,7 @@ const METAS: Record<string, TemplateMeta> = {
     description:
       "A Linear-inspired dark landing page with 3D dashboard mockup, AI agents integration showcase, project timeline visualization, workflow carousel, and feature cards. Built with Motion and Tailwind CSS v4.",
     dependencies: ["lucide-react", "motion"],
+    registryDependencies: ["button"],
   },
   xero: {
     name: "xero",

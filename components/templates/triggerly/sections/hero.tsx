@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
-import { DashboardMockup } from "./dashboard-mockup";
+import * as motion from "motion/react-client";
+import { EditorMockup } from "./editor-mockup";
+import Link from "next/link";
 
-export function Hero3DStage() {
+export function Hero() {
   const [yOffset, setYOffset] = useState(0);
 
   useEffect(() => {
@@ -25,57 +26,33 @@ export function Hero3DStage() {
     rotateZ: 324,
   };
 
-  const headingWords = "A modern tool for planning and building products".split(
-    " ",
-  );
+  const headingWords = "A visual builder for automating any workflow".split(" ");
   const subtitleWords =
-    "Meet the system for modern software development. Streamline issues, projects, and product roadmaps.".split(
-      " ",
-    );
+    "Connect your apps, trigger actions, and automate processes on a drag-and-drop node editor. No code required.".split(" ");
 
   return (
-    <section
-      className="relative w-full min-h-screen overflow-hidden"
-      style={{ backgroundColor: "#09090B" }}
-    >
-      <div
-        className="absolute pointer-events-none"
+    <section className="relative w-full min-h-screen overflow-hidden" style={{ backgroundColor: "#09090B" }}>
+      <div className="absolute pointer-events-none"
         style={{
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -30%)",
-          width: "1200px",
-          height: "800px",
-          background:
-            "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
+          top: "50%", left: "50%", transform: "translate(-50%, -30%)",
+          width: "1200px", height: "800px",
+          background: "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%)",
         }}
       />
       <div className="relative z-10 pt-28 flex flex-col overflow-x-hidden">
         <div className="w-full flex justify-center mt-16 px-8 xl:-ms-30">
           <div className="w-full max-w-4xl">
             <motion.h1
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: {
-                  transition: { staggerChildren: 0.04 },
-                },
-              }}
+              initial="hidden" animate="show"
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
               className="text-4xl md:text-5xl lg:text-[56px] font-medium text-white leading-[1.1] text-balance"
             >
               {headingWords.map((word, i) => (
                 <motion.span
-                  key={i}
-                  className="inline-block"
+                  key={i} className="inline-block"
                   variants={{
                     hidden: { opacity: 0, y: 15, filter: "blur(4px)" },
-                    show: {
-                      opacity: 1,
-                      y: 0,
-                      filter: "blur(0px)",
-                      transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
-                    },
+                    show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] } },
                   }}
                 >
                   {word}&nbsp;
@@ -83,28 +60,16 @@ export function Hero3DStage() {
               ))}
             </motion.h1>
             <motion.p
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: {},
-                show: {
-                  transition: { staggerChildren: 0.02, delayChildren: 0.3 },
-                },
-              }}
+              initial="hidden" animate="show"
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.02, delayChildren: 0.3 } } }}
               className="mt-6 text-lg text-zinc-400 max-w-[65ch]"
             >
               {subtitleWords.map((word, i) => (
                 <motion.span
-                  key={i}
-                  className="inline-block"
+                  key={i} className="inline-block"
                   variants={{
                     hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
-                    show: {
-                      opacity: 1,
-                      y: 0,
-                      filter: "blur(0px)",
-                      transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] },
-                    },
+                    show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] } },
                   }}
                 >
                   {word}&nbsp;
@@ -114,37 +79,24 @@ export function Hero3DStage() {
             <motion.div
               initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{
-                duration: 0.4,
-                delay: 0.6,
-                ease: [0.23, 1, 0.32, 1],
-              }}
+              transition={{ duration: 0.4, delay: 0.6, ease: [0.23, 1, 0.32, 1] }}
               className="mt-8 flex items-center gap-6"
             >
-              <button className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm">
+              <Link href="/register" className="px-5 py-2.5 bg-white text-zinc-900 font-medium rounded-lg hover:bg-zinc-100 transition-colors text-sm">
                 Start building
-              </button>
+              </Link>
               <button className="text-zinc-300 font-medium hover:text-white transition-colors flex items-center gap-2 text-sm">
-                <span className="text-zinc-500">New:</span> Sprint agent for
-                Slack
+                <span className="text-zinc-500">New:</span> Triggerly AI builds your flows
                 <span aria-hidden="true">→</span>
               </button>
             </motion.div>
           </div>
         </div>
-        <div
-          className="relative mt-16 w-full"
-          style={{
-            height: "700px",
-            marginTop: "-60px",
-          }}
+        <div className="relative mt-16 w-full pointer-events-none"
+          style={{ height: "700px", marginTop: "-60px" }}
         >
-          <div
-            className="absolute bottom-0 left-0 right-0 h-72 z-10 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to top, #09090B 20%, transparent 100%)",
-            }}
+          <div className="absolute bottom-0 left-0 right-0 h-72 z-10 pointer-events-none"
+            style={{ background: "linear-gradient(to top, #09090B 20%, transparent 100%)" }}
           />
           <div
             style={{
@@ -153,8 +105,7 @@ export function Hero3DStage() {
               contain: "strict",
               perspective: "4000px",
               perspectiveOrigin: "100% 0",
-              width: "100%",
-              height: "100%",
+              width: "100%", height: "100%",
               transformStyle: "preserve-3d",
               position: "relative",
             }}
@@ -162,11 +113,7 @@ export function Hero3DStage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.5,
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1] as const,
-              }}
+              transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] as const }}
               style={{
                 backgroundColor: "#09090B",
                 transformOrigin: "0 0",
@@ -174,20 +121,16 @@ export function Hero3DStage() {
                 WebkitBackfaceVisibility: "hidden",
                 border: "1px solid #1e1e1e",
                 borderRadius: "10px",
-                width: "1600px",
-                height: "900px",
+                width: "1600px", height: "900px",
                 margin: "280px auto auto",
                 position: "absolute",
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
+                top: 0, bottom: 0, left: 0, right: 0,
                 transform: `translate(${baseTransform.translateX}%) scale(${baseTransform.scale}) rotateX(${baseTransform.rotateX}deg) rotateY(${baseTransform.rotateY}deg) rotate(${baseTransform.rotateZ}deg)`,
                 transformStyle: "preserve-3d",
                 overflow: "hidden",
               }}
             >
-              <DashboardMockup />
+              <EditorMockup />
             </motion.div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
-import "@/components/templates/sprint/globals.css";
+import "@/components/templates/triggerly/globals.css";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -9,12 +9,12 @@ const fontSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ui.abdulrahmanasif.dev"),
-  title: "Sprint — Product Planning & Building Tool",
+  title: "Triggerly — Product Planning & Building Tool",
   description:
     "A Linear-inspired dark landing page with 3D dashboard mockup, AI agents integration, project timeline visualization, and workflow carousel.",
 };
 
-export default function SprintLayout({
+export default function TriggerlyLayout({
   children,
 }: {
   children: React.ReactNode;

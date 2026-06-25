@@ -8,25 +8,25 @@ import xeroThumbnail from "@/public/thumbnails/xero.png";
 import auroraThumbnail from "@/public/thumbnails/aurora.png";
 import luminaThumbnail from "@/public/thumbnails/lumina.png";
 import nextoThumbnail from "@/public/thumbnails/nexto.png";
-import sprintThumbnail from "@/public/thumbnails/sprint.png";
+import triggerlyThumbnail from "@/public/thumbnails/triggerly.png";
 export const TEMPLATES: Template[] = [
   {
-    slug: "sprint",
-    title: "Sprint",
+    slug: "triggerly",
+    title: "Triggerly",
     description:
       "A Linear-inspired dark landing page with 3D dashboard mockup, AI agents integration showcase, project timeline visualization, workflow carousel, and feature cards. Built with Motion and Tailwind CSS v4.",
     color: "zinc",
     accent: "hsl(0 0% 100%)",
-    thumbnail: sprintThumbnail,
+    thumbnail: triggerlyThumbnail,
   },
   {
-    slug: "nexto",
-    title: "Nexto",
+    slug: "xero",
+    title: "Xero",
     description:
-      "A studio agency landing page with hero, logos strip, services grid, showcase, stats, process steps, testimonial, CTA, and footer.",
+      "A dark SaaS landing page for a data encryption platform with animated beam hero, features, showcase, pricing, FAQ, and testimonials.",
     color: "purple",
-    accent: "hsl(248 82% 69%)",
-    thumbnail: nextoThumbnail,
+    accent: "hsl(290 40% 72%)",
+    thumbnail: xeroThumbnail,
   },
 
   {
@@ -59,15 +59,6 @@ export const TEMPLATES: Template[] = [
   },
 
   {
-    slug: "xero",
-    title: "Xero",
-    description:
-      "A dark SaaS landing page for a data encryption platform with animated beam hero, features, showcase, pricing, FAQ, and testimonials.",
-    color: "purple",
-    accent: "hsl(290 40% 72%)",
-    thumbnail: xeroThumbnail,
-  },
-  {
     slug: "lumina",
     title: "Lumina",
     description:
@@ -93,6 +84,15 @@ export const TEMPLATES: Template[] = [
     color: "zinc",
     accent: "hsl(0 0% 100%)",
     thumbnail: glazeThumbnail,
+  },
+  {
+    slug: "nexto",
+    title: "Nexto",
+    description:
+      "A studio agency landing page with hero, logos strip, services grid, showcase, stats, process steps, testimonial, CTA, and footer.",
+    color: "purple",
+    accent: "hsl(248 82% 69%)",
+    thumbnail: nextoThumbnail,
   },
 
   {

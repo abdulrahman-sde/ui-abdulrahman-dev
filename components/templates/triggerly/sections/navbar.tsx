@@ -1,4 +1,4 @@
-import { LogoIcon } from "@/components/logo";
+import { LogoIcon } from "./logo";
 
 export function Navbar() {
   return (
@@ -10,15 +10,50 @@ export function Navbar() {
             <span className="text-foreground font-semibold">Triggerly</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Product</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Integrations</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Templates</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Docs</a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Product
+            </a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Integrations
+            </a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Pricing
+            </a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Templates
+            </a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Docs
+            </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Log in</a>
-            <a href="#" className="text-sm text-foreground bg-secondary hover:bg-muted px-3.5 py-1.5 rounded-md border border-secondary transition-colors">Sign up</a>
+            <a
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Log in
+            </a>
+            <a
+              href="#"
+              className="text-sm text-foreground bg-secondary hover:bg-muted px-3.5 py-1.5 rounded-md border border-secondary transition-colors"
+            >
+              Sign up
+            </a>
           </div>
         </div>
       </div>
